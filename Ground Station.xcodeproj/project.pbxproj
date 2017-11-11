@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DCDAED6C1FB6D27000F41B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */; };
+		DCDAED6F1FB6D27000F41B2E /* Ground_Station.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED6D1FB6D27000F41B2E /* Ground_Station.xcdatamodeld */; };
+		DCDAED711FB6D27000F41B2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCDAED701FB6D27000F41B2E /* Assets.xcassets */; };
+		DCDAED741FB6D27000F41B2E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCDAED721FB6D27000F41B2E /* MainMenu.xib */; };
+		DCDAED801FB6D27000F41B2E /* Ground_StationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED7F1FB6D27000F41B2E /* Ground_StationTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DCDAED7C1FB6D27000F41B2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCDAED601FB6D27000F41B2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCDAED671FB6D27000F41B2E;
+			remoteInfo = "Ground Station";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DCDAED681FB6D27000F41B2E /* Ground Station.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ground Station.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DCDAED6E1FB6D27000F41B2E /* Ground_Station.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ground_Station.xcdatamodel; sourceTree = "<group>"; };
+		DCDAED701FB6D27000F41B2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DCDAED731FB6D27000F41B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DCDAED751FB6D27000F41B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCDAED761FB6D27000F41B2E /* Ground_Station.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ground_Station.entitlements; sourceTree = "<group>"; };
+		DCDAED7B1FB6D27000F41B2E /* Ground StationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ground StationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCDAED7F1FB6D27000F41B2E /* Ground_StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground_StationTests.swift; sourceTree = "<group>"; };
+		DCDAED811FB6D27000F41B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DCDAED651FB6D27000F41B2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCDAED781FB6D27000F41B2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DCDAED5F1FB6D27000F41B2E = {
+			isa = PBXGroup;
+			children = (
+				DCDAED6A1FB6D27000F41B2E /* Ground Station */,
+				DCDAED7E1FB6D27000F41B2E /* Ground StationTests */,
+				DCDAED691FB6D27000F41B2E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DCDAED691FB6D27000F41B2E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DCDAED681FB6D27000F41B2E /* Ground Station.app */,
+				DCDAED7B1FB6D27000F41B2E /* Ground StationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DCDAED6A1FB6D27000F41B2E /* Ground Station */ = {
+			isa = PBXGroup;
+			children = (
+				DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */,
+				DCDAED701FB6D27000F41B2E /* Assets.xcassets */,
+				DCDAED721FB6D27000F41B2E /* MainMenu.xib */,
+				DCDAED751FB6D27000F41B2E /* Info.plist */,
+				DCDAED761FB6D27000F41B2E /* Ground_Station.entitlements */,
+				DCDAED6D1FB6D27000F41B2E /* Ground_Station.xcdatamodeld */,
+			);
+			path = "Ground Station";
+			sourceTree = "<group>";
+		};
+		DCDAED7E1FB6D27000F41B2E /* Ground StationTests */ = {
+			isa = PBXGroup;
+			children = (
+				DCDAED7F1FB6D27000F41B2E /* Ground_StationTests.swift */,
+				DCDAED811FB6D27000F41B2E /* Info.plist */,
+			);
+			path = "Ground StationTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DCDAED671FB6D27000F41B2E /* Ground Station */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCDAED841FB6D27000F41B2E /* Build configuration list for PBXNativeTarget "Ground Station" */;
+			buildPhases = (
+				DCDAED641FB6D27000F41B2E /* Sources */,
+				DCDAED651FB6D27000F41B2E /* Frameworks */,
+				DCDAED661FB6D27000F41B2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ground Station";
+			productName = "Ground Station";
+			productReference = DCDAED681FB6D27000F41B2E /* Ground Station.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DCDAED7A1FB6D27000F41B2E /* Ground StationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCDAED871FB6D27000F41B2E /* Build configuration list for PBXNativeTarget "Ground StationTests" */;
+			buildPhases = (
+				DCDAED771FB6D27000F41B2E /* Sources */,
+				DCDAED781FB6D27000F41B2E /* Frameworks */,
+				DCDAED791FB6D27000F41B2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DCDAED7D1FB6D27000F41B2E /* PBXTargetDependency */,
+			);
+			name = "Ground StationTests";
+			productName = "Ground StationTests";
+			productReference = DCDAED7B1FB6D27000F41B2E /* Ground StationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DCDAED601FB6D27000F41B2E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Stephen Flores";
+				TargetAttributes = {
+					DCDAED671FB6D27000F41B2E = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					DCDAED7A1FB6D27000F41B2E = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = DCDAED671FB6D27000F41B2E;
+					};
+				};
+			};
+			buildConfigurationList = DCDAED631FB6D27000F41B2E /* Build configuration list for PBXProject "Ground Station" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DCDAED5F1FB6D27000F41B2E;
+			productRefGroup = DCDAED691FB6D27000F41B2E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DCDAED671FB6D27000F41B2E /* Ground Station */,
+				DCDAED7A1FB6D27000F41B2E /* Ground StationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DCDAED661FB6D27000F41B2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCDAED711FB6D27000F41B2E /* Assets.xcassets in Resources */,
+				DCDAED741FB6D27000F41B2E /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCDAED791FB6D27000F41B2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DCDAED641FB6D27000F41B2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCDAED6C1FB6D27000F41B2E /* AppDelegate.swift in Sources */,
+				DCDAED6F1FB6D27000F41B2E /* Ground_Station.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCDAED771FB6D27000F41B2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCDAED801FB6D27000F41B2E /* Ground_StationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DCDAED7D1FB6D27000F41B2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCDAED671FB6D27000F41B2E /* Ground Station */;
+			targetProxy = DCDAED7C1FB6D27000F41B2E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DCDAED721FB6D27000F41B2E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DCDAED731FB6D27000F41B2E /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DCDAED821FB6D27000F41B2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DCDAED831FB6D27000F41B2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		DCDAED851FB6D27000F41B2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Ground Station/Ground_Station.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Ground Station/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Prograde.Ground-Station";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		DCDAED861FB6D27000F41B2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Ground Station/Ground_Station.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Ground Station/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Prograde.Ground-Station";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		DCDAED881FB6D27000F41B2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Ground StationTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Prograde.Ground-StationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ground Station.app/Contents/MacOS/Ground Station";
+			};
+			name = Debug;
+		};
+		DCDAED891FB6D27000F41B2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Ground StationTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Prograde.Ground-StationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ground Station.app/Contents/MacOS/Ground Station";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DCDAED631FB6D27000F41B2E /* Build configuration list for PBXProject "Ground Station" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCDAED821FB6D27000F41B2E /* Debug */,
+				DCDAED831FB6D27000F41B2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCDAED841FB6D27000F41B2E /* Build configuration list for PBXNativeTarget "Ground Station" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCDAED851FB6D27000F41B2E /* Debug */,
+				DCDAED861FB6D27000F41B2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCDAED871FB6D27000F41B2E /* Build configuration list for PBXNativeTarget "Ground StationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCDAED881FB6D27000F41B2E /* Debug */,
+				DCDAED891FB6D27000F41B2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DCDAED6D1FB6D27000F41B2E /* Ground_Station.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DCDAED6E1FB6D27000F41B2E /* Ground_Station.xcdatamodel */,
+			);
+			currentVersion = DCDAED6E1FB6D27000F41B2E /* Ground_Station.xcdatamodel */;
+			path = Ground_Station.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DCDAED601FB6D27000F41B2E /* Project object */;
+}
