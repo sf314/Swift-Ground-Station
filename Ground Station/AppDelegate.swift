@@ -8,14 +8,35 @@
 
 import Cocoa
 
-@NSApplicationMain
+//@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
+    // *** Data variables
+    var window: NSWindow!
+    var viewController = GSViewController()
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        // Initialize the window using a rect of defined size
+        let contentRect = NSMakeRect(0, 0, 1200, 600)
+        window = NSWindow(contentRect: contentRect, styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
+        
+        // Initialize the viewcontroller using the window's rect
+        let windowRect =  NSMakeRect(0, 0, window.frame.size.width, window.frame.size.height)
+        viewController.view = NSView(frame: windowRect)
+        viewController.view.wantsLayer = true // What?
+        
+        // Add subview and make key
+        window.contentView?.addSubview(viewController.view)
+        window.title = "Ground Station"
+        
+        // Call viewDidLoad()
+        viewController.viewDidLoad()
+        
+        // Launch window
+        window.makeKeyAndOrderFront(nil) // This calls viewDidAppear()
+        
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

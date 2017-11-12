@@ -10,8 +10,14 @@
 		DCDAED6C1FB6D27000F41B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */; };
 		DCDAED6F1FB6D27000F41B2E /* Ground_Station.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED6D1FB6D27000F41B2E /* Ground_Station.xcdatamodeld */; };
 		DCDAED711FB6D27000F41B2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCDAED701FB6D27000F41B2E /* Assets.xcassets */; };
-		DCDAED741FB6D27000F41B2E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCDAED721FB6D27000F41B2E /* MainMenu.xib */; };
 		DCDAED801FB6D27000F41B2E /* Ground_StationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED7F1FB6D27000F41B2E /* Ground_StationTests.swift */; };
+		DCDAED8B1FB6D28200F41B2E /* GSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED8A1FB6D28200F41B2E /* GSViewController.swift */; };
+		DCDAED8C1FB6D28200F41B2E /* GSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED8A1FB6D28200F41B2E /* GSViewController.swift */; };
+		DCDAED8E1FB6E2D400F41B2E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED8D1FB6E2D400F41B2E /* main.swift */; };
+		DCDAED8F1FB6E2D400F41B2E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED8D1FB6E2D400F41B2E /* main.swift */; };
+		DCDAED901FB6E33300F41B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */; };
+		DCDAED921FB8DEDF00F41B2E /* MiniMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED911FB8DEDF00F41B2E /* MiniMap.swift */; };
+		DCDAED931FB8DEDF00F41B2E /* MiniMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED911FB8DEDF00F41B2E /* MiniMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,15 +32,17 @@
 
 /* Begin PBXFileReference section */
 		DCDAED681FB6D27000F41B2E /* Ground Station.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ground Station.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		DCDAED6E1FB6D27000F41B2E /* Ground_Station.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ground_Station.xcdatamodel; sourceTree = "<group>"; };
 		DCDAED701FB6D27000F41B2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DCDAED731FB6D27000F41B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		DCDAED751FB6D27000F41B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCDAED761FB6D27000F41B2E /* Ground_Station.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ground_Station.entitlements; sourceTree = "<group>"; };
 		DCDAED7B1FB6D27000F41B2E /* Ground StationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ground StationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCDAED7F1FB6D27000F41B2E /* Ground_StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground_StationTests.swift; sourceTree = "<group>"; };
+		DCDAED7F1FB6D27000F41B2E /* Ground_StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground_StationTests.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		DCDAED811FB6D27000F41B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCDAED8A1FB6D28200F41B2E /* GSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		DCDAED8D1FB6E2D400F41B2E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DCDAED911FB8DEDF00F41B2E /* MiniMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 				DCDAED691FB6D27000F41B2E /* Products */,
 			);
 			sourceTree = "<group>";
+			wrapsLines = 0;
 		};
 		DCDAED691FB6D27000F41B2E /* Products */ = {
 			isa = PBXGroup;
@@ -77,8 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */,
+				DCDAED8D1FB6E2D400F41B2E /* main.swift */,
 				DCDAED701FB6D27000F41B2E /* Assets.xcassets */,
-				DCDAED721FB6D27000F41B2E /* MainMenu.xib */,
+				DCDAED8A1FB6D28200F41B2E /* GSViewController.swift */,
+				DCDAED911FB8DEDF00F41B2E /* MiniMap.swift */,
 				DCDAED751FB6D27000F41B2E /* Info.plist */,
 				DCDAED761FB6D27000F41B2E /* Ground_Station.entitlements */,
 				DCDAED6D1FB6D27000F41B2E /* Ground_Station.xcdatamodeld */,
@@ -179,7 +190,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCDAED711FB6D27000F41B2E /* Assets.xcassets in Resources */,
-				DCDAED741FB6D27000F41B2E /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +208,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCDAED6C1FB6D27000F41B2E /* AppDelegate.swift in Sources */,
+				DCDAED8B1FB6D28200F41B2E /* GSViewController.swift in Sources */,
+				DCDAED8E1FB6E2D400F41B2E /* main.swift in Sources */,
+				DCDAED921FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
 				DCDAED6F1FB6D27000F41B2E /* Ground_Station.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +219,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCDAED901FB6E33300F41B2E /* AppDelegate.swift in Sources */,
+				DCDAED8C1FB6D28200F41B2E /* GSViewController.swift in Sources */,
 				DCDAED801FB6D27000F41B2E /* Ground_StationTests.swift in Sources */,
+				DCDAED931FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
+				DCDAED8F1FB6E2D400F41B2E /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,17 +236,6 @@
 			targetProxy = DCDAED7C1FB6D27000F41B2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		DCDAED721FB6D27000F41B2E /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DCDAED731FB6D27000F41B2E /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DCDAED821FB6D27000F41B2E /* Debug */ = {
