@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC853B761FC78774001E8F45 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853B751FC78774001E8F45 /* GraphView.swift */; };
+		DC853B771FC78774001E8F45 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853B751FC78774001E8F45 /* GraphView.swift */; };
 		DCDAED6C1FB6D27000F41B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */; };
 		DCDAED6F1FB6D27000F41B2E /* Ground_Station.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED6D1FB6D27000F41B2E /* Ground_Station.xcdatamodeld */; };
 		DCDAED711FB6D27000F41B2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCDAED701FB6D27000F41B2E /* Assets.xcassets */; };
@@ -31,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC853B751FC78774001E8F45 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		DCDAED681FB6D27000F41B2E /* Ground Station.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ground Station.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		DCDAED6E1FB6D27000F41B2E /* Ground_Station.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ground_Station.xcdatamodel; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 				DCDAED701FB6D27000F41B2E /* Assets.xcassets */,
 				DCDAED8A1FB6D28200F41B2E /* GSViewController.swift */,
 				DCDAED911FB8DEDF00F41B2E /* MiniMap.swift */,
+				DC853B751FC78774001E8F45 /* GraphView.swift */,
 				DCDAED751FB6D27000F41B2E /* Info.plist */,
 				DCDAED761FB6D27000F41B2E /* Ground_Station.entitlements */,
 				DCDAED6D1FB6D27000F41B2E /* Ground_Station.xcdatamodeld */,
@@ -212,6 +216,7 @@
 				DCDAED8E1FB6E2D400F41B2E /* main.swift in Sources */,
 				DCDAED921FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
 				DCDAED6F1FB6D27000F41B2E /* Ground_Station.xcdatamodeld in Sources */,
+				DC853B761FC78774001E8F45 /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +229,7 @@
 				DCDAED801FB6D27000F41B2E /* Ground_StationTests.swift in Sources */,
 				DCDAED931FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
 				DCDAED8F1FB6E2D400F41B2E /* main.swift in Sources */,
+				DC853B771FC78774001E8F45 /* GraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
