@@ -11,4 +11,5 @@ import Cocoa
 
 let delegate = AppDelegate()
 NSApplication.shared.delegate = delegate
-let returnCode = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv) // Start app runloop
+// Start app runloop
+let returnCode = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv) 

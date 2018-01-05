@@ -8,29 +8,48 @@
 
 import Foundation
 import AppKit
+
 import Cocoa
 
-class GSViewController: NSViewController {
+class GSViewController: NSViewController, ORSSerialPortDelegate {
     
-    @IBAction func buttonPressed(_ sender: NSButton) { // Use @Objc or @IBAction
-        print("Button pressed! It was called " + sender.title)
+    
+    // MARK: - Data Variables
+    
+    // MARK: - Serial Port
+    let serialPortManager = ORSSerialPortManager.shared()
+    var port: ORSSerialPort? {
+        didSet { // Is this necessary?
+            oldValue?.close()
+            oldValue?.delegate = nil
+            port?.delegate = nil
+            print("Port: Triggered didSet")
+            print("Port: name is \(port?.path ?? "NONE")")
+        }
     }
+    
+    
+    let portSelector = NSPopUpButton()
     
     override func viewDidAppear() {
         super.viewDidAppear()
         print("View did appear")
+        
         // Draw UI here
-        let button = NSButton(title: "My Button", target: self, action: #selector(self.buttonPressed))
+        let button = NSButton(title: "Connect", target: self, action: #selector(self.buttonPressed))
         button.setButtonType(.momentaryPushIn)
-        button.bezelStyle = .roundRect
+        button.bezelStyle = .rounded
         view.addSubview(button)
+        
+        setupPortSelector()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View loaded")
         
-        print(view.frame.size.width)
-        
+        print("\(view.frame.size.width) by \(view.frame.size.height)")
+        print(portSelector.frame.size.width)
     }
+    
 }
