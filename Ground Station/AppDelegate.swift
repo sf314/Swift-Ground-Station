@@ -9,7 +9,7 @@
 import Cocoa
 
 //@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSToolbarDelegate {
 
     // *** Data variables
     var window: NSWindow!
@@ -18,17 +18,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Initialize the window using a rect of defined size
-        let contentRect = NSMakeRect(0, 0, 1200, 600)
+        let contentRect = NSMakeRect(0, 0, 1200, 600) // Fixed!
         window = NSWindow(contentRect: contentRect, styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         
         // Initialize the viewcontroller using the window's rect
         let windowRect =  NSMakeRect(0, 0, window.frame.size.width, window.frame.size.height)
         viewController.view = NSView(frame: windowRect)
-        viewController.view.wantsLayer = true // What?
+        //viewController.view.wantsLayer = true // What?
         
         // Add subview and make key
         window.contentView?.addSubview(viewController.view)
         window.title = "Ground Station"
+        window.titleVisibility = .visible
+        window.titlebarAppearsTransparent = true
+        
+        // (NEW) Generate toolbar
+//        let toolbar = NSToolbar(identifier: .init("myToolbar"))
+//        toolbar.allowsUserCustomization = true
+//        toolbar.delegate = self
+//        
+//        
+//        let toolbarButton = NSToolbarItem(itemIdentifier: .init("myButton"))
+//        toolbarButton.label = "TB Button"
+//        toolbarButton.minSize = NSSize(width: 20, height: 20)
+//        
+//        toolbar.allowsExtensionItems = true
+//        toolbar.insertItem(withItemIdentifier: .init("myButton"), at: 0)
+//        print(toolbar.items[0].label)
+//        window.toolbar = toolbar
+//        
+//        
+//        if let _ = window.toolbar {
+//            print("Has toolbar!");
+//        } else {
+//            print("Missing toolbar!")
+//        }
         
         // Call viewDidLoad()
         viewController.viewDidLoad()
@@ -37,6 +61,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.makeKeyAndOrderFront(nil) // This calls viewDidAppear()
         
         
+    }
+    
+    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+        print("Toolbar is being modified")
+        return NSToolbarItem(itemIdentifier: itemIdentifier)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

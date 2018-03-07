@@ -8,11 +8,10 @@
 
 import Foundation
 import AppKit
-
+import CoreGraphics
 import Cocoa
 
-class GSViewController: NSViewController, ORSSerialPortDelegate {
-    
+class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, ORSSerialPortDelegate {
     
     // MARK: - Data Variables
     
@@ -23,33 +22,120 @@ class GSViewController: NSViewController, ORSSerialPortDelegate {
             oldValue?.close()
             oldValue?.delegate = nil
             port?.delegate = nil
-            print("Port: Triggered didSet")
-            print("Port: name is \(port?.path ?? "NONE")")
+            print("Port: didSet")
+            print("Port: name is \(port?.path ?? "NONE SET")")
+        }
+    }
+    
+    @IBAction func testFunc(_: AnyObject) {
+        print("Button pressed!")
+        
+        // What are the available ports?
+        print("serialPortManager: availablePorts = ")
+        var i = 0
+        for sport in serialPortManager.availablePorts {
+            print("\t\(serialPortManager.availablePorts.index(of: sport) ?? -1). \(sport.path)")
+            i += 1
+        }
+        
+        // What is the currently selected port? Use that to attach port
+        if let selected = portSelector.selectedItem {
+            print("portSelector: selectedItem = \(selected.title) @ index \(portSelector.indexOfSelectedItem)")
+            port = serialPortManager.availablePorts[portSelector.indexOfSelectedItem]
+        } else {
+            print("portSelector: selectedItem = (no selected item)")
+            port = nil
         }
     }
     
     
-    let portSelector = NSPopUpButton()
+    // MARK: - UI elements
+    let topBar = NSView()
+    let panel = GSPanel()
     
+    let portSelector = NSPopUpButton()
+    let serialWindow = NSScrollView()
+    
+    let connectButton: NSButton = {
+        let b = NSButton(title: "Connect", target: self, action: #selector(testFunc(_:)))
+        b.setButtonType(.momentaryPushIn)
+        b.bezelStyle = .rounded
+        b.setFrameSize(NSSize(width: 120, height: 25))
+        return b
+    }()
+    
+    
+    
+    
+    
+    // MARK: - Overrides
     override func viewDidAppear() {
         super.viewDidAppear()
         print("View did appear")
+        view.window?.delegate = self
         
-        // Draw UI here
-        let button = NSButton(title: "Connect", target: self, action: #selector(self.buttonPressed))
-        button.setButtonType(.momentaryPushIn)
-        button.bezelStyle = .rounded
-        view.addSubview(button)
-        
-        setupPortSelector()
+        configureTopBar() // Top Bar
+        configurePanel() // Base panel
+        configurePortSelector() // Port selector
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View loaded")
+        print("Loading view")
+        view.autoresizesSubviews = true
         
-        print("\(view.frame.size.width) by \(view.frame.size.height)")
-        print(portSelector.frame.size.width)
+        
+        print("View size: \(view.frame.size.width) by \(view.frame.size.height)")
+        print("Port selector width: \(portSelector.frame.size.width)")
     }
     
 }
+
+
+// MARK: - Port Selection UI item
+extension GSViewController {
+    func configurePortSelector() {
+        print("Setting up port selector")
+        
+        // Binding
+        portSelector.bind(.content, to: serialPortManager, withKeyPath: "availablePorts", options: nil) // Works
+        portSelector.bind(.contentValues, to: serialPortManager, withKeyPath: "availablePorts.name", options: nil)
+        // Handling port selection is done with button!
+        //portSelector.bind(.selectedObject, to: port, withKeyPath: "self", options: nil)
+        // ^^ serialPort, "self": Causes exception upon selection, for key "self"
+        // ^^ self, "serialPort": not kvc compliant for key "serialPort"
+        // ^^ port, "self": Causes exception upon selection, for key "self"
+        // ^^ Ignore this line for now...?
+        
+        // Styling
+        //        portSelector.setTitle("Port Selector")
+        //        portSelector.bezelStyle = .roundRect
+        //        portSelector.frame.size.width = 300.0 // Changeable
+        //        portSelector.frame.size.height = 30.0 // Does not visually change
+        //        portSelector.frame.origin = CGPoint(x: 50, y: 50)
+        //        portSelector.bezelStyle = .rounded // THIS IS THE ONE
+        //portSelector.addItem(withTitle: "No Port")
+    }
+}
+
+
+
+
+
+// ***** Notes
+/*
+ Setting up buttons with selectors:
+ 1. Declare an IBAction function that takes (_: AnyObject) as a parameter.
+ 2. Somewhere within viewDidAppear, declare an NSButton with a title, target, and action:
+        let button = NSButton(title: "Connect", target: self, action: #selector(self.testFunc))
+ 3. Set various properties on the button, including positionary stuff
+         button.setButtonType(.momentaryPushIn)
+         button.bezelStyle = .rounded
+         button.translatesAutoresizingMaskIntoConstraints = true
+         button.frame.origin = CGPoint(x: 400, y: 400)
+         button.setFrameSize(NSSize(width: 100, height: 45))
+ 4. Add it to the view.
+         view.addSubview(button)
+ 
+ 
+ */
