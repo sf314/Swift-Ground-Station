@@ -27,7 +27,7 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         }
     }
     
-    @IBAction func testFunc(_: AnyObject) {
+    @IBAction func connectToPort(_: AnyObject) {
         print("Button pressed!")
         
         // What are the available ports?
@@ -50,14 +50,16 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
     
     
     // MARK: - UI elements
-    let topBar = NSView()
-    let panel = GSPanel()
+    let topBar = NSView() // Toolbar at the top
+    let panel = GSPanel() // Entire lower view. Holds all major subviews
+    
     
     let portSelector = NSPopUpButton()
     let serialWindow = NSScrollView()
+    let serialMonitor = NSTextView()
     
     let connectButton: NSButton = {
-        let b = NSButton(title: "Connect", target: self, action: #selector(testFunc(_:)))
+        let b = NSButton(title: "Connect", target: self, action: #selector(connectToPort(_:)))
         b.setButtonType(.momentaryPushIn)
         b.bezelStyle = .rounded
         b.setFrameSize(NSSize(width: 120, height: 25))
@@ -75,8 +77,12 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         view.window?.delegate = self
         
         configureTopBar() // Top Bar
-        configurePanel() // Base panel
+        configurePanel() // Base panel. Holds all subviews. 
         configurePortSelector() // Port selector
+        
+        // Confirm size of elements
+        print("Size of panel is \(panel.frame.size.width)x\(panel.frame.size.height)")
+        print("Position of panel is \(panel.frame.origin.x)x\(panel.frame.origin.y)")
     }
     
     override func viewDidLoad() {
@@ -97,7 +103,7 @@ extension GSViewController {
     func configurePortSelector() {
         print("Setting up port selector")
         
-        // Binding
+        // Binding the port selector to the content of the serialPortManager
         portSelector.bind(.content, to: serialPortManager, withKeyPath: "availablePorts", options: nil) // Works
         portSelector.bind(.contentValues, to: serialPortManager, withKeyPath: "availablePorts.name", options: nil)
         // Handling port selection is done with button!

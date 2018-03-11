@@ -6,6 +6,11 @@
 //  Copyright © 2017 Stephen Flores. All rights reserved.
 //
 
+/* MiniMap: Display GPS location on map
+ Test new GPS parser in C++ first! Build app that reads from a file one 
+ character at a time, until EOF. Check if \r\n is the newline character. 
+ */
+
 import Foundation
 import Cocoa
 

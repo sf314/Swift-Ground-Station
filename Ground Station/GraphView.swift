@@ -10,6 +10,14 @@
  Subclass of NSView that implements graphing functionality. Will hold n number
  of data points between max and min. The maximum and minimum values will be
  displayed on the left margin.
+ 
+ Data points to graph (8, including all of tilt sensor):
+ Altitude
+ Pressure
+ Temp
+ Voltage
+ GPS altitude
+ Tilt X/Y/Z
  */
 
 import Foundation
@@ -23,7 +31,7 @@ class GraphView: NSView {
     
     var min = 0.0
     var max = 0.0
-    var size = 100
+    var size = 100 // variable length?
     var debugMode = false
     
     func add(_ point: Double) {

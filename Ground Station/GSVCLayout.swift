@@ -85,12 +85,45 @@ extension GSViewController {
         panel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         panel.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
+        panel.autoresizesSubviews = true
         configureSerialMonitor()
     }
     
-    // Configure serial monitor
+    // Configure the serial monitor: A simple text view
     func configureSerialMonitor() {
+        print("Configuring serial monitor")
+        // Both the serial window (ScrollView), and text itself (TextView)
+//        serialWindow.backgroundColor = .red
+        serialMonitor.backgroundColor = .blue
+        serialMonitor.textColor = .white
         
+        // serialWindow placement inside panel: 100x100 in top left corner
+        panel.addSubview(serialWindow)
+        serialWindow.translatesAutoresizingMaskIntoConstraints = false
+        serialWindow.topAnchor.constraint(equalTo: panel.topAnchor).isActive = true
+        serialWindow.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 30).isActive = true
+        serialWindow.trailingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 100).isActive = true
+        serialWindow.bottomAnchor.constraint(equalTo: panel.topAnchor, constant: 100).isActive = true
+        
+        // serialMonitor placement inside scrollview: Fit inside perfectly
+        serialWindow.autoresizesSubviews = true
+        serialWindow.contentView.autoresizesSubviews = true
+        serialWindow.contentView.addSubview(serialMonitor)
+        
+        serialWindow.contentView.topAnchor.constraint(equalTo: serialWindow.topAnchor).isActive = true
+        serialWindow.contentView.leadingAnchor.constraint(equalTo: serialWindow.leadingAnchor).isActive = true
+        serialWindow.contentView.trailingAnchor.constraint(equalTo: serialWindow.trailingAnchor).isActive = true
+        serialWindow.contentView.bottomAnchor.constraint(equalTo: serialWindow.bottomAnchor).isActive = true
+        
+        serialMonitor.translatesAutoresizingMaskIntoConstraints = false
+        serialMonitor.topAnchor.constraint(equalTo: serialWindow.topAnchor).isActive = true
+        serialMonitor.leadingAnchor.constraint(equalTo: serialWindow.leadingAnchor).isActive = true
+        serialMonitor.trailingAnchor.constraint(equalTo: serialWindow.trailingAnchor).isActive = true
+        serialMonitor.bottomAnchor.constraint(equalTo: serialWindow.bottomAnchor).isActive = true
+        serialMonitor.maxSize.height = 10000000
+        
+        serialMonitor.isEditable = true
+//        view.window?.makeFirstResponder(serialMonitor)
     }
 }
 
@@ -121,14 +154,18 @@ extension GSViewController {
             view.setFrameOrigin(NSPoint(x: 0, y: 0))
         }
         
-        view.needsDisplay = true // Necessary to update subviews
-        for sview in view.subviews {
-            sview.updateConstraints()
-            //print("subview (\(sview.className) y: \(sview.frame.origin.y)")
-            sview.needsDisplay = true
-        }
+        updateSubviews(view)
         
-        //print("View resized to: (\(view.frame.width), \(view.frame.height))")
+        serialMonitor.scrollToEndOfDocument(self)
+    }
+    
+    func updateSubviews(_ v: NSView) {
+        // Recursively update all subviews of all views
+        v.needsDisplay = true
+        for subview in v.subviews {
+            subview.updateConstraints()
+            updateSubviews(subview)
+        }
     }
     
 }
