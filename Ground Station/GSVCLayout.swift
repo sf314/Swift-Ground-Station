@@ -15,11 +15,6 @@ import AppKit
 import Cocoa
 import CoreGraphics
 
-// Colour declarations:
-let backgroundDark = NSColor(calibratedRed: 28/255, green: 28/255, blue: 34/255, alpha: 1)
-let backgroundMed = NSColor(calibratedRed: 45/255, green: 47/255, blue: 58/255, alpha: 1)
-let backgroundLight = NSColor(calibratedRed: 129/255, green: 135/255, blue: 138/255, alpha: 1)
-
 
 extension GSViewController {
     func configureTopBar() {
@@ -51,6 +46,7 @@ extension GSViewController {
         connectButton.translatesAutoresizingMaskIntoConstraints = false
         connectButton.leadingAnchor.constraint(equalTo: portSelector.trailingAnchor, constant: 15).isActive = true
         connectButton.centerYAnchor.constraint(equalTo: topBar.centerYAnchor).isActive = true
+        connectButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
     }
 }
@@ -86,44 +82,85 @@ extension GSViewController {
         panel.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         panel.autoresizesSubviews = true
+        
+        configureLeftPanel()
+        configureRightPanel()
+    }
+    
+    func configureLeftPanel() {
+        // Configure left side of screen, including serial monitor, map, etc
+        print("Configuring left panel")
+        panel.addSubview(leftPanel)
+        
+        leftPanel.translatesAutoresizingMaskIntoConstraints = false
+        leftPanel.translatesAutoresizingMaskIntoConstraints = false
+        leftPanel.topAnchor.constraint(equalTo: panel.topAnchor).isActive = true
+        leftPanel.leadingAnchor.constraint(equalTo: panel.leadingAnchor).isActive = true
+        leftPanel.widthAnchor.constraint(equalToConstant: 400).isActive = true
+        leftPanel.bottomAnchor.constraint(equalTo: panel.bottomAnchor).isActive = true
+        
+        leftPanel.autoresizesSubviews = true
+        
         configureSerialMonitor()
     }
+    
+    func configureRightPanel() {
+        print("Configuring right panel")
+        // Configure right side of screen. Primarily graphs in a flow-layout, yea?
+        panel.addSubview(rightPanel)
+        
+        rightPanel.translatesAutoresizingMaskIntoConstraints = false
+        rightPanel.topAnchor.constraint(equalTo: topBar.bottomAnchor).isActive = true
+        rightPanel.leadingAnchor.constraint(equalTo: leftPanel.trailingAnchor).isActive = true
+        rightPanel.trailingAnchor.constraint(equalTo: panel.trailingAnchor).isActive = true
+        rightPanel.bottomAnchor.constraint(equalTo: panel.bottomAnchor).isActive = true
+        
+        rightPanel.autoresizesSubviews = true
+        
+        // Add graphs in a flow layout kinda style
+        rightPanel.setColor(backgroundLight)
+    }
+    
+}
+
+extension GSViewController {
     
     // Configure the serial monitor: A simple text view
     func configureSerialMonitor() {
         print("Configuring serial monitor")
         // Both the serial window (ScrollView), and text itself (TextView)
-//        serialWindow.backgroundColor = .red
-        serialMonitor.backgroundColor = .blue
+        serialWindow.backgroundColor = .red
+        serialMonitor.backgroundColor = backgroundMed
         serialMonitor.textColor = .white
         
-        // serialWindow placement inside panel: 100x100 in top left corner
-        panel.addSubview(serialWindow)
+        // *** Scroll View: serialWindow
+        leftPanel.addSubview(serialWindow)
         serialWindow.translatesAutoresizingMaskIntoConstraints = false
-        serialWindow.topAnchor.constraint(equalTo: panel.topAnchor).isActive = true
-        serialWindow.leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 30).isActive = true
-        serialWindow.trailingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 100).isActive = true
-        serialWindow.bottomAnchor.constraint(equalTo: panel.topAnchor, constant: 100).isActive = true
+        serialWindow.topAnchor.constraint(equalTo: leftPanel.topAnchor, constant: 15).isActive = true
+        serialWindow.leadingAnchor.constraint(equalTo: leftPanel.leadingAnchor, constant: 15).isActive = true
+        serialWindow.trailingAnchor.constraint(equalTo: leftPanel.trailingAnchor, constant: -15).isActive = true // Remember your coord system!
+        serialWindow.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        // serialMonitor placement inside scrollview: Fit inside perfectly
         serialWindow.autoresizesSubviews = true
-        serialWindow.contentView.autoresizesSubviews = true
-        serialWindow.contentView.addSubview(serialMonitor)
+        serialWindow.documentView = serialMonitor // KEEP
+        serialWindow.scrollsDynamically = true
         
-        serialWindow.contentView.topAnchor.constraint(equalTo: serialWindow.topAnchor).isActive = true
-        serialWindow.contentView.leadingAnchor.constraint(equalTo: serialWindow.leadingAnchor).isActive = true
-        serialWindow.contentView.trailingAnchor.constraint(equalTo: serialWindow.trailingAnchor).isActive = true
-        serialWindow.contentView.bottomAnchor.constraint(equalTo: serialWindow.bottomAnchor).isActive = true
-        
+        // *** Text View: serialMonitor
         serialMonitor.translatesAutoresizingMaskIntoConstraints = false
         serialMonitor.topAnchor.constraint(equalTo: serialWindow.topAnchor).isActive = true
         serialMonitor.leadingAnchor.constraint(equalTo: serialWindow.leadingAnchor).isActive = true
-        serialMonitor.trailingAnchor.constraint(equalTo: serialWindow.trailingAnchor).isActive = true
-        serialMonitor.bottomAnchor.constraint(equalTo: serialWindow.bottomAnchor).isActive = true
-        serialMonitor.maxSize.height = 10000000
+        serialMonitor.trailingAnchor.constraint(equalTo: serialWindow.trailingAnchor).isActive = true // I SEE TEXT AGAIN YAS
+        serialMonitor.heightAnchor.constraint(greaterThanOrEqualTo: serialWindow.heightAnchor).isActive = true // Necessary for scrolling (?)
+        serialMonitor.minSize.width = serialWindow.frame.width
+        serialMonitor.minSize.height = serialWindow.frame.height
+        serialMonitor.textContainerInset = NSSize(width: 10, height: 0)
+        
+        // How to get it to autoscroll:
+        serialWindow.hasVerticalScroller = true
+        serialMonitor.sizeToFit()
+        // Warning: Height for serialMonitor is ambiguous since it changes
         
         serialMonitor.isEditable = true
-//        view.window?.makeFirstResponder(serialMonitor)
     }
 }
 

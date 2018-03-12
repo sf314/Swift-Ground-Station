@@ -44,6 +44,10 @@ class GraphView: NSView {
     // MARK: - Drawing
     override func draw(_ rect: NSRect) {
         super.draw(rect)
+        
+        // Draw background colour
+        backgroundLight.set()
+        bounds.fill()
     }
     
     func updateDisplay() {

@@ -21,6 +21,8 @@
 		DC5B10A21FFF562E00B6DF53 /* GSVCSerialFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5B10A11FFF562E00B6DF53 /* GSVCSerialFunc.swift */; };
 		DC5B10A31FFF582300B6DF53 /* GSVCSerialFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5B10A11FFF562E00B6DF53 /* GSVCSerialFunc.swift */; };
 		DC5B10A41FFF582600B6DF53 /* GSVCLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5B10891FFF3CBA00B6DF53 /* GSVCLayout.swift */; };
+		DC6A57FE2056583C007CE5EE /* CocoaColorLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A57FD2056583C007CE5EE /* CocoaColorLib.swift */; };
+		DC6A57FF2056583C007CE5EE /* CocoaColorLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A57FD2056583C007CE5EE /* CocoaColorLib.swift */; };
 		DC853B761FC78774001E8F45 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853B751FC78774001E8F45 /* GraphView.swift */; };
 		DC853B771FC78774001E8F45 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853B751FC78774001E8F45 /* GraphView.swift */; };
 		DCDAED6C1FB6D27000F41B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */; };
@@ -61,6 +63,7 @@
 		DC5B10951FFF43F600B6DF53 /* ORSSerialPacketDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPacketDescriptor.m; sourceTree = "<group>"; };
 		DC5B10961FFF43F700B6DF53 /* ORSSerialRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialRequest.m; sourceTree = "<group>"; };
 		DC5B10A11FFF562E00B6DF53 /* GSVCSerialFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSVCSerialFunc.swift; sourceTree = "<group>"; };
+		DC6A57FD2056583C007CE5EE /* CocoaColorLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaColorLib.swift; sourceTree = "<group>"; };
 		DC853B751FC78774001E8F45 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		DCDAED681FB6D27000F41B2E /* Ground Station.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ground Station.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -124,6 +127,7 @@
 				DC5B10891FFF3CBA00B6DF53 /* GSVCLayout.swift */,
 				DCDAED911FB8DEDF00F41B2E /* MiniMap.swift */,
 				DC853B751FC78774001E8F45 /* GraphView.swift */,
+				DC6A57FD2056583C007CE5EE /* CocoaColorLib.swift */,
 				DCDAED751FB6D27000F41B2E /* Info.plist */,
 				DCDAED761FB6D27000F41B2E /* Ground_Station.entitlements */,
 				DCDAED6D1FB6D27000F41B2E /* Ground_Station.xcdatamodeld */,
@@ -260,6 +264,7 @@
 				DCDAED8B1FB6D28200F41B2E /* GSViewController.swift in Sources */,
 				DCDAED8E1FB6E2D400F41B2E /* main.swift in Sources */,
 				DC5B109B1FFF43F700B6DF53 /* ORSSerialBuffer.m in Sources */,
+				DC6A57FE2056583C007CE5EE /* CocoaColorLib.swift in Sources */,
 				DCDAED921FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
 				DC5B10A21FFF562E00B6DF53 /* GSVCSerialFunc.swift in Sources */,
 				DC5B109F1FFF43F700B6DF53 /* ORSSerialRequest.m in Sources */,
@@ -280,6 +285,7 @@
 				DC5B10A31FFF582300B6DF53 /* GSVCSerialFunc.swift in Sources */,
 				DCDAED801FB6D27000F41B2E /* Ground_StationTests.swift in Sources */,
 				DC5B109A1FFF43F700B6DF53 /* ORSSerialPort.m in Sources */,
+				DC6A57FF2056583C007CE5EE /* CocoaColorLib.swift in Sources */,
 				DCDAED931FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
 				DCDAED8F1FB6E2D400F41B2E /* main.swift in Sources */,
 				DC5B10981FFF43F700B6DF53 /* ORSSerialPortManager.m in Sources */,

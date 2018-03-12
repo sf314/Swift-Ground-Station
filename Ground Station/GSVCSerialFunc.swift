@@ -28,7 +28,9 @@ extension GSViewController {
     // Receive data at port
     func serialPort(_ serialPort: ORSSerialPort, didReceive data: Data) {
         if let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-            print("Received: \(string)") // 16 characters at a time, MS \r\n ending
+            let s = string as String
+            print("Received: \(s)") // 16 characters at a time, MS \r\n ending
+            addToSerialMonitor(s)
         } else {
             print("Bad data at port.")
         }
@@ -42,9 +44,11 @@ extension GSViewController {
     // Notify open and close
     func serialPortWasOpened(_ serialPort: ORSSerialPort) {
         print("Serial port was opened")
+        connectButton.title = "Disconnect"
     }
     func serialPortWasClosed(_ serialPort: ORSSerialPort) {
         print("Serial port was closed")
+        connectButton.title = "Connect"
     }
     
     // Open or close the port
@@ -59,13 +63,13 @@ extension GSViewController {
         if let port = self.port {
             if port.isOpen {
                 port.close() // Never run?
-                sender.title = "Open"
+                sender.title = "Connect"
                 print("connectButton: Closed port")
             } else {
                 port.open() // If error, need USB access entitlement (for sandbox)
                 port.delegate = self // BLOODY HELL
                 port.baudRate = 9600
-                sender.title = "Close"
+                sender.title = "Disconnect"
                 print("connectButton: Opened port. Is it really open? \(port.isOpen)")
             }
         } else { 

@@ -27,7 +27,30 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         }
     }
     
-    @IBAction func connectToPort(_: AnyObject) {
+    // MARK: - Receive data
+    func addToSerialMonitor(_ s: String) {
+        self.serialMonitor.textStorage?.mutableString.append("\(s)");
+        self.serialMonitor.textColor = .white
+        self.serialMonitor.frame.size.height += 14 // Hey it scrolls!
+        self.serialMonitor.frame.size.width = serialWindow.contentView.frame.size.width // Necessary for some reason
+        self.serialMonitor.needsDisplay = true
+        self.serialMonitor.scrollToEndOfDocument(self)
+        
+        // *** Parse data here
+    }
+    
+    func debugToSerialMonitor(_ s: String) {
+        // Same as regular, but no parsing!
+        self.serialMonitor.textStorage?.mutableString.append("\(s)");
+        self.serialMonitor.textColor = .white
+        self.serialMonitor.frame.size.height += 14 // Hey it scrolls!
+        self.serialMonitor.frame.size.width = serialWindow.contentView.frame.size.width // Necessary for some reason
+        self.serialMonitor.needsDisplay = true
+        self.serialMonitor.scrollToEndOfDocument(self)
+    }
+    
+    // Mark: - Connect
+    @IBAction func connectToPort(_ sender: AnyObject) {
         print("Button pressed!")
         
         // What are the available ports?
@@ -42,6 +65,9 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         if let selected = portSelector.selectedItem {
             print("portSelector: selectedItem = \(selected.title) @ index \(portSelector.indexOfSelectedItem)")
             port = serialPortManager.availablePorts[portSelector.indexOfSelectedItem]
+            
+            // Attempt smart stuff: Call the backend serial port connect func
+            connect(sender as! NSButton)
         } else {
             print("portSelector: selectedItem = (no selected item)")
             port = nil
@@ -52,13 +78,15 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
     // MARK: - UI elements
     let topBar = NSView() // Toolbar at the top
     let panel = GSPanel() // Entire lower view. Holds all major subviews
-    
+    let leftPanel = GSPanel() // Left side of the view
+    let rightPanel = GSPanel() // Right side of the view
     
     let portSelector = NSPopUpButton()
     let serialWindow = NSScrollView()
     let serialMonitor = NSTextView()
     
     let connectButton: NSButton = {
+//        let b = NSButton(title: "Connect", target: self, action: #selector(connectToPort(_:)))
         let b = NSButton(title: "Connect", target: self, action: #selector(connectToPort(_:)))
         b.setButtonType(.momentaryPushIn)
         b.bezelStyle = .rounded
@@ -76,9 +104,7 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         print("View did appear")
         view.window?.delegate = self
         
-        configureTopBar() // Top Bar
-        configurePanel() // Base panel. Holds all subviews. 
-        configurePortSelector() // Port selector
+        
         
         // Confirm size of elements
         print("Size of panel is \(panel.frame.size.width)x\(panel.frame.size.height)")
@@ -90,6 +116,9 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         print("Loading view")
         view.autoresizesSubviews = true
         
+        configureTopBar() // Top Bar
+        configurePanel() // Base panel. Holds all subviews. 
+        configurePortSelector() // Port selector
         
         print("View size: \(view.frame.size.width) by \(view.frame.size.height)")
         print("Port selector width: \(portSelector.frame.size.width)")
