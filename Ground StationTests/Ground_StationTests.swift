@@ -26,6 +26,22 @@ class Ground_StationTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func testParser() {
+        // Generate array of test strings
+        let testStrings = ["One, two, th", "ree, four, fi", "ve\nOne, t", "wo, three", ", four, five\n"]
+        let parser = Parser(delimiter: "\n")
+        
+        for s in testStrings {
+            parser.add(s)
+            
+            while (parser.hasLine()) {
+                print("Has line: ", terminator: "")
+                print(parser.getNextLine())
+            }
+        }
+        
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

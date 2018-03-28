@@ -118,7 +118,7 @@ extension GSViewController {
         rightPanel.autoresizesSubviews = true
         
         // Add graphs in a flow layout kinda style
-        rightPanel.setColor(backgroundLight)
+        rightPanel.setColor(backgroundDark)
     }
     
 }

@@ -39,7 +39,8 @@ class Grays {
 
 // Greens
 class Greens {
-    let standard = NSColor(red: 52, green: 171, blue: 58, alpha: 1)
+    let standard = NSColor(red: 52/255, green: 171/255, blue: 58/255, alpha: 1)
+    let oldeGS = NSColor(red: 137/255, green: 232/255, blue: 146/255, alpha: 1)
 }
 
 // Custom Colour declarations:

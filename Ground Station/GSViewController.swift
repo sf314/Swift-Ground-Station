@@ -120,6 +120,16 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         configurePanel() // Base panel. Holds all subviews. 
         configurePortSelector() // Port selector
         
+        // Test GraphView
+        let testGraphView = GraphView()
+        rightPanel.addSubview(testGraphView)
+        testGraphView.translatesAutoresizingMaskIntoConstraints = false // Below is proper inset values
+        testGraphView.topAnchor.constraint(equalTo: rightPanel.topAnchor, constant: 20).isActive = true
+        testGraphView.leadingAnchor.constraint(equalTo: rightPanel.leadingAnchor, constant: 20).isActive = true
+        testGraphView.trailingAnchor.constraint(equalTo: rightPanel.trailingAnchor, constant: -20).isActive = true
+        testGraphView.bottomAnchor.constraint(equalTo: rightPanel.bottomAnchor, constant: -20).isActive = true
+        testGraphView.generateTestPoints()
+        
         print("View size: \(view.frame.size.width) by \(view.frame.size.height)")
         print("Port selector width: \(portSelector.frame.size.width)")
     }
