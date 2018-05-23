@@ -14,6 +14,10 @@ import Cocoa
 class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, ORSSerialPortDelegate {
     
     // MARK: - Data Variables
+    let parser = TelemParser()
+    var graphs: [GraphView] = [] // Hold graphs (can add to it!)
+    var graphItems: [GraphItem] = [] // Hold graph items (which themselves hold graphs)
+//    var graphItems: [NSCollectionViewItem] = []
     
     // MARK: - Serial Port
     let serialPortManager = ORSSerialPortManager.shared()
@@ -27,8 +31,9 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         }
     }
     
-    // MARK: - Receive data
+    // MARK: - Receive and parse data
     func addToSerialMonitor(_ s: String) {
+        write(s, toFile: "RawData.txt")
         self.serialMonitor.textStorage?.mutableString.append("\(s)");
         self.serialMonitor.textColor = .white
         self.serialMonitor.frame.size.height += 14 // Hey it scrolls!
@@ -37,6 +42,15 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         self.serialMonitor.scrollToEndOfDocument(self)
         
         // *** Parse data here
+        for character in s {
+            parser.ingest(character)
+        }
+        
+        while parser.hasPackets() {
+            let packet = parser.popNext()
+            print("Received packet: \(packet)")
+            write(packet, toFile: "Packets.csv")
+        }
     }
     
     func debugToSerialMonitor(_ s: String) {
@@ -74,6 +88,30 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         }
     }
     
+    // MARK: - Send command
+    @IBAction func sendCommand(_ s: String) {
+        print("Sending \(s)")
+    }
+    
+    // MARK: - Toggle save
+    @IBAction func toggleSave(_ sender: AnyObject) {
+        if enableFileWrite {
+            print("Saving disabled")
+            enableFileWrite = false
+            toggleSaveButton.title = "Saving disabled"
+        } else {
+            print("Saving enabled");
+            enableFileWrite = true
+            toggleSaveButton.title = "Saving enabled"
+        }
+        print("File Write set to \(enableFileWrite)")
+        
+        // Simulate incoming data
+        addToSerialMonitor(fakePacket() + "\r\n")
+        
+        updateSubviews(self.view)
+    }
+    
     
     // MARK: - UI elements
     let topBar = NSView() // Toolbar at the top
@@ -83,7 +121,11 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
     
     let portSelector = NSPopUpButton()
     let serialWindow = NSScrollView()
-    let serialMonitor = NSTextView()
+    let serialMonitor = NSTextView() 
+    var graphGridView = NSView()
+    
+    let commandStack = NSStackView()
+    var commandViews: [NSStackView] = []
     
     let connectButton: NSButton = {
 //        let b = NSButton(title: "Connect", target: self, action: #selector(connectToPort(_:)))
@@ -94,8 +136,13 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         return b
     }()
     
-    
-    
+    let toggleSaveButton: NSButton = {
+        let b = NSButton(title: "Saving disabled", target: self, action: #selector(toggleSave(_:)))
+        b.setButtonType(.momentaryPushIn)
+        b.bezelStyle = .rounded
+        b.setFrameSize(NSSize(width: 120, height: 25))
+        return b
+    }()
     
     
     // MARK: - Overrides
@@ -109,6 +156,7 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         // Confirm size of elements
         print("Size of panel is \(panel.frame.size.width)x\(panel.frame.size.height)")
         print("Position of panel is \(panel.frame.origin.x)x\(panel.frame.origin.y)")
+        print("Size of graphGridView is \(graphGridView.frame.size.width)x\(graphGridView.frame.size.height)")
     }
     
     override func viewDidLoad() {
@@ -119,16 +167,7 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         configureTopBar() // Top Bar
         configurePanel() // Base panel. Holds all subviews. 
         configurePortSelector() // Port selector
-        
-        // Test GraphView
-        let testGraphView = GraphView()
-        rightPanel.addSubview(testGraphView)
-        testGraphView.translatesAutoresizingMaskIntoConstraints = false // Below is proper inset values
-        testGraphView.topAnchor.constraint(equalTo: rightPanel.topAnchor, constant: 20).isActive = true
-        testGraphView.leadingAnchor.constraint(equalTo: rightPanel.leadingAnchor, constant: 20).isActive = true
-        testGraphView.trailingAnchor.constraint(equalTo: rightPanel.trailingAnchor, constant: -20).isActive = true
-        testGraphView.bottomAnchor.constraint(equalTo: rightPanel.bottomAnchor, constant: -20).isActive = true
-        testGraphView.generateTestPoints()
+        configureGraphs() // Graph naming and stuff (after drawing)
         
         print("View size: \(view.frame.size.width) by \(view.frame.size.height)")
         print("Port selector width: \(portSelector.frame.size.width)")

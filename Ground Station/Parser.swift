@@ -15,83 +15,76 @@ import Foundation
  add(input: String)
  hasLine() -> Bool
  
+ Maybe parse one character at a time like CSGps?
  */
 
-class Parser {
-    
-    // Init
+class TelemParser {
+    // Init?
     init() {
-        delimiter = "\r\n"
+        tempString = ""
+        stringQueue = []
     }
     
-    init(delimiter d: String) {
-        delimiter = d
-    }
+    // Vars
+    var tempString: String
+    var stringQueue: [String]
+    let expectedPacketSize = 17
+    let expectedPacketHeader = "5324"
     
-    // Data Variables
-    var readyQueue: [String] = []
-    var tempString = ""
-    var delimiter = "\n"
-    
-    // Primary functions
-    func add(_ s: String) {
-        // Break into units based on delimiter
-        // Go thru components and put strings in ready queue (use tempstring)
-        // If no delimiter, then simple append and return. Else:
-        // For each component starting at top:
-        // Add to tempString. // Even blank!
-        // If has more elements after it, then add to queue/clear 
-        
-        print("Parser: adding \(s)")
-        var components = s.components(separatedBy: delimiter)
-        print("    Units: \(components)")
-        
-        // If very first is empty, then push current tempstring
-        if components[0] == "" {
-            readyQueue.append(tempString)
+    // Funcs
+    func ingest(_ c: Character) {
+        if (c == "\r\n") {
+            stringQueue.append(tempString)
             tempString = ""
-            components.remove(at: 0)
+            return
+        }
+        if (c == "\r") {
+            print("TelemParser.ingest(): Warning! Lonely \n or \r detected! Will still append current string, tho. ")
+            stringQueue.append(tempString)
+            tempString = ""
+            return
+        }
+        if (c == "\n") {
+            print("Warnin")
+            return
         }
         
-        while components.count > 0 {
-            // Edge case
-            if components[0] == "" {
-                components.remove(at: 0)
-                continue
-            }
-            
-            // Main logic
-            if components.count == 1 {
-                // Just append
-                tempString += components[0]
-                components.remove(at: 0) // pop
-            } else {
-                // Append and queue
-                tempString += components[0]
-                components.remove(at: 0)
-                readyQueue.append(tempString)
-                tempString = ""
-            }
-        }
-        
+        tempString.append(c)
     }
     
-    func hasLine() -> Bool {
-        // Final check: Make sure empty string does not go thru
-        if readyQueue.count != 0 {
-            if readyQueue[0] == "" {
-                readyQueue.remove(at: 0)
-                return false 
+    func isValid(_ packet: String) -> Bool {
+        // Split it into segments by comma
+        // Check length. Should be expectedPacketSize
+        let arr = packet.split(separator: ",")
+        if arr.count == expectedPacketSize {
+            if arr[0] == expectedPacketHeader {
+                return true
             }
-            return true
-        } else {
             return false
         }
+        return false
     }
     
-    func getNextLine() -> String {
-        return readyQueue.remove(at: 0)
+    func hasPackets() -> Bool {
+        return stringQueue.count > 0
     }
     
-    // Helper functions
+    func popNext() -> String {
+        return stringQueue.remove(at: 0)
+    }
+}
+
+
+/*** For testing
+ Exclude the line ending!
+ */
+func fakePacket() -> String {
+    var returnString = "5324" + ","
+    for i in 0..<16 {
+        returnString += String(arc4random() % 100)
+        if i != 15 {
+            returnString += ","
+        } 
+    }
+    return returnString
 }

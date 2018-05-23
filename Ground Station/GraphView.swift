@@ -20,6 +20,10 @@
  Tilt X/Y/Z
  */
 
+enum GraphType {
+    case alt, press, temp, volt, gps_alt, tilt_x, tilt_y, tilt_z, none
+}
+
 import Foundation
 import Cocoa
 
@@ -35,7 +39,11 @@ class GraphView: NSView {
     var width = 0.0
     var size = 200 // variable length?
     var debugMode = false
+    var name = "Graph"
+    var unit = "m"
+    var type = GraphType.none
     
+    let label = NSTextView()
     let colors = CustomColorLibrary()
     
     
@@ -51,6 +59,10 @@ class GraphView: NSView {
     
     // MARK: - Drawing
     override func draw(_ rect: NSRect) {
+        if label.string == "" {
+            self.addSubview(label)
+        }
+        
         if data.count == 0 {self.add(0.0)}
         super.draw(rect)
         
@@ -73,6 +85,20 @@ class GraphView: NSView {
             bez.fill()
             x += dx
         }
+        
+        // Draw label: name of field, and latest data point on top!
+        label.isEditable = false
+        if let latestPoint = data.last {
+            label.string = name + ": " + String(latestPoint) + unit
+        } else {
+            label.string = name
+        }
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 17).isActive = true
+        label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        label.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        label.backgroundColor = backgroundLight
     }
     
     func map(_ y: Double) -> Double {
@@ -85,6 +111,11 @@ class GraphView: NSView {
         self.setNeedsDisplay(self.bounds)
     }
     
+    func set(name: String, unit: String) {
+        self.name = name
+        self.unit = unit
+    }
+    
     // MARK: - Debugging
     func debug(_ s: String) {
         if debugMode {
@@ -93,19 +124,54 @@ class GraphView: NSView {
     }
     
     func generateTestPoints() {
-//        for i in 1..<20 {
-//            self.add(Double(i));
-//        }
-//        for i in 1..<20 {
-//            self.add(Double(i));
-//        }
-//        for i in 1..<20 {
-//            self.add(Double(i));
-//        }
+        for i in 1..<20 {
+            self.add(Double(i));
+        }
+        for i in 1..<20 {
+            self.add(Double(i));
+        }
+        for i in 1..<20 {
+            self.add(Double(i));
+        }
         add(12)
         add(12)
         add(12)
         add(12)
+    }
+    
+    
+}
+
+
+
+// For CollectionView: Requires NSCollectionViewItem subclass
+
+class GraphItem: NSGridCell {
+    
+    // MARK: - Variables
+    var graph: GraphView? = nil
+//    
+//    // MARK: - Functions
+//    func setGraph(_ g: GraphView) {
+//        graph = g
+//        view.addSubview(graph)
+//    }
+//    
+//    init() {
+//        graph = GraphView()
+//        super.init(coder: NSKeyedArchiver())!
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        graph = GraphView()
+//        super.init(coder: coder)
+////        fatalError("init(coder:) has not been implemented")
+//        // Nahh
+//    }
+    func setGraph(_ g: GraphView) {
+//        view.addSubview(g)
+        print("GraphItem.setGraph(): setting graph with name: \(g.name)")
+        graph = g
     }
     
     

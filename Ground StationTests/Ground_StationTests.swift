@@ -28,18 +28,43 @@ class Ground_StationTests: XCTestCase {
     
     func testParser() {
         // Generate array of test strings
-        let testStrings = ["One, two, th", "ree, four, fi", "ve\nOne, t", "wo, three", ", four, five\n"]
-        let parser = Parser(delimiter: "\n")
-        
-        for s in testStrings {
-            parser.add(s)
-            
-            while (parser.hasLine()) {
-                print("Has line: ", terminator: "")
-                print(parser.getNextLine())
-            }
+        print("Generating test stream")
+        var testStream = ""
+        for _ in 0..<20 { // 20 fake packets worth of stream data
+            testStream += fakePacket() + "\r\n"
         }
         
+        // Create parser
+        let parser = TelemParser()
+        
+        // Split testStream into segments of 16 chars (but keep \r\n together?)
+        print("Splitting test stream into segments of 16")
+        var streamSegments: [String] = []
+        while testStream.count > 16 {
+            var temp = ""
+            for _ in 0..<16 {
+                temp += String(testStream.removeFirst())
+            }
+            streamSegments.append(temp)
+        }
+        
+        // Simulate receiver
+        // Each iteration of outer loop represents one burst from receiver.
+        print("Simulating receiver")
+        for seg in streamSegments {
+            // Feed chars of received data to parser
+            print("Received segment \(seg)")
+            for c in seg {
+                parser.ingest(c)
+            }
+            
+            // Read data from parser, assert validity
+            while parser.hasPackets() {
+                let packet = parser.popNext()
+                print("Dequeue packet: \(packet)")
+                XCTAssert(parser.isValid(packet))
+            }
+        }
     }
     
     func testPerformanceExample() {

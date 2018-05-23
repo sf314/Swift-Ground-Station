@@ -17,7 +17,7 @@ import Foundation
 
 let telemetryFile = "telemetry.csv"
 let logFile = "log.txt"
-var enableFileWrite = true
+var enableFileWrite = false
 
 func write(_ s: String, toFile fileName: String) {
     if enableFileWrite {
@@ -29,10 +29,13 @@ func write(_ s: String, toFile fileName: String) {
         if let outStream = OutputStream(toFileAtPath: fileUrl!.absoluteString, append: true) {
             outStream.open()
             let length = s.lengthOfBytes(using: .utf8)
+            print("Write to \(fileUrl!.absoluteString) \(length) bytes")
             outStream.write(s, maxLength: length)
             outStream.close()
         } else {
             print("Could not write to disk!")
         }
+    } else {
+        print("Write disabled")
     }
 }

@@ -48,6 +48,11 @@ extension GSViewController {
         connectButton.centerYAnchor.constraint(equalTo: topBar.centerYAnchor).isActive = true
         connectButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
+        topBar.addSubview(toggleSaveButton)
+        toggleSaveButton.translatesAutoresizingMaskIntoConstraints = false
+        toggleSaveButton.centerYAnchor.constraint(equalTo: topBar.centerYAnchor).isActive = true
+        toggleSaveButton.trailingAnchor.constraint(equalTo: topBar.trailingAnchor, constant: -30).isActive = true
+        toggleSaveButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
     }
 }
 
@@ -102,13 +107,14 @@ extension GSViewController {
         leftPanel.autoresizesSubviews = true
         
         configureSerialMonitor()
+        configureCommandPanel()
     }
     
     func configureRightPanel() {
         print("Configuring right panel")
+        
         // Configure right side of screen. Primarily graphs in a flow-layout, yea?
         panel.addSubview(rightPanel)
-        
         rightPanel.translatesAutoresizingMaskIntoConstraints = false
         rightPanel.topAnchor.constraint(equalTo: topBar.bottomAnchor).isActive = true
         rightPanel.leadingAnchor.constraint(equalTo: leftPanel.trailingAnchor).isActive = true
@@ -116,9 +122,68 @@ extension GSViewController {
         rightPanel.bottomAnchor.constraint(equalTo: panel.bottomAnchor).isActive = true
         
         rightPanel.autoresizesSubviews = true
-        
-        // Add graphs in a flow layout kinda style
         rightPanel.setColor(backgroundDark)
+        
+        // Create 8 graphs
+        for i in 0..<8 {
+            let graph = GraphView()
+            graph.name = "Graph " + String(i)
+            graphs.append(graph)
+//            let dat = Double(i) * 20.0
+//            print("Generating graph with data value \(dat)")
+//            for _ in 0..<5 {
+//                graph.add(dat)
+//            }
+        }
+        // Create dummy graph
+        let dummyGraph = GraphView()
+        dummyGraph.name = "Dummy Graph"
+        graphs.append(dummyGraph)
+    
+        rightPanel.addSubview(graphGridView)
+        graphGridView.translatesAutoresizingMaskIntoConstraints = false // Below is proper inset values
+        graphGridView.topAnchor.constraint(equalTo: rightPanel.topAnchor, constant: 20).isActive = true
+        graphGridView.leadingAnchor.constraint(equalTo: rightPanel.leadingAnchor, constant: 20).isActive = true
+        graphGridView.trailingAnchor.constraint(equalTo: rightPanel.trailingAnchor, constant: -20).isActive = true
+        graphGridView.bottomAnchor.constraint(equalTo: rightPanel.bottomAnchor, constant: -20).isActive = true
+        
+        // *****  Bahhhh! Use stackviews?
+        
+        // 1. Declare main stack, assign distribution properties, and add it to view hierarchy
+        let rowStack = NSStackView(frame: graphGridView.frame)
+        rowStack.distribution = .fillEqually
+        rowStack.orientation = .vertical
+        rowStack.autoresizesSubviews = true
+        graphGridView.addSubview(rowStack)
+        
+        // 2. Declare your subviews, add them to the view hierarcy
+        let row1 = NSStackView(views: [graphs[0], graphs[1], graphs[2]])
+        let row2 = NSStackView(views: [graphs[3], graphs[4], graphs[5]])
+        let row3 = NSStackView(views: [graphs[6], graphs[7], NSView()])
+        
+        rowStack.addView(row1, in: .top)
+        rowStack.addView(row2, in: .top)
+        rowStack.addView(row3, in: .top)
+        
+        // 3. Set AutoLayout constraints on the main stack
+        rowStack.translatesAutoresizingMaskIntoConstraints = false
+        rowStack.topAnchor.constraint(equalTo: graphGridView.topAnchor).isActive = true
+        rowStack.bottomAnchor.constraint(equalTo: graphGridView.bottomAnchor).isActive = true
+        rowStack.leadingAnchor.constraint(equalTo: graphGridView.leadingAnchor).isActive = true
+        rowStack.trailingAnchor.constraint(equalTo: graphGridView.trailingAnchor).isActive = true
+        
+        // 4. Assign distribution properties of the subviews
+        row1.distribution = .fillEqually
+        row1.autoresizesSubviews = true
+        
+        row2.distribution = .fillEqually
+        row2.autoresizesSubviews = true
+        
+        row3.distribution = .fillEqually
+        row3.autoresizesSubviews = true
+        
+        print("Finished configuring right panel")
+
     }
     
 }
@@ -168,12 +233,52 @@ extension GSViewController {
     
     
     func configureCommandPanel() {
-//        // Create subview 
-//        let subview = NSView()
-//        view.addSubview(subview)
-//        
-//        // Generate constraints
-//        subview.topAnchor.constraint(equalTo: topBar.bottomAnchor)
+        // Create stack views: 2 x 4, all settable
+        
+        
+        // 1. Gen main stack and set distribution properties, and add it to the subview
+        commandStack.distribution = .fillEqually
+        commandStack.orientation = .vertical
+        commandStack.autoresizesSubviews = true
+        leftPanel.addSubview(commandStack)
+        
+        // 2. Generate all n command subviews, add them
+        let numberOfCommands = 5
+        for _ in 0..<numberOfCommands {
+            let commandView = NSStackView()
+            commandView.distribution = .fillEqually
+            commandView.orientation = .horizontal
+            commandView.autoresizesSubviews = true
+            
+            let inputField = NSTextField()
+            let sendButton = NSButton()
+            
+            commandView.addView(inputField, in: .leading)
+            commandView.addView(sendButton, in: .leading)
+            commandViews.append(commandView)
+//            inputField.widthAnchor.constraint(equalTo: commandView.widthAnchor, multiplier: 0.5).isActive = true
+//            sendButton.widthAnchor.constraint(equalTo: commandView.widthAnchor, multiplier: 0.5).isActive = true
+            
+            commandStack.addView(commandView, in: .top)
+            commandView.widthAnchor.constraint(equalTo: commandStack.widthAnchor).isActive = true
+            
+            inputField.target = self
+            inputField.action = #selector(sendCommand(_:))
+            let b = NSButton(title: "Connect", target: self, action: #selector(connectToPort(_:)))
+        }
+        
+        // 3. Set AutoLayout constraints on main stack
+        commandStack.translatesAutoresizingMaskIntoConstraints = false
+        commandStack.topAnchor.constraint(equalTo: serialWindow.bottomAnchor, constant: 15).isActive = true
+        commandStack.heightAnchor.constraint(equalToConstant: CGFloat(30 * numberOfCommands)).isActive = true
+        commandStack.leadingAnchor.constraint(equalTo: leftPanel.leadingAnchor, constant: 15).isActive = true
+        commandStack.trailingAnchor.constraint(equalTo: leftPanel.trailingAnchor, constant: -15).isActive = true
+        
+        // 4. Set preset text for commands 1-4 (of 5)
+        (commandViews[0].views[0] as! NSTextField).stringValue = "x"
+        (commandViews[1].views[0] as! NSTextField).stringValue = "b"
+        (commandViews[2].views[0] as! NSTextField).stringValue = "c"
+        (commandViews[3].views[0] as! NSTextField).stringValue = "?"
     }
 }
 
@@ -192,7 +297,6 @@ extension GSViewController {
         }
         
         updateSubviews(view)
-        
         serialMonitor.scrollToEndOfDocument(self)
     }
     

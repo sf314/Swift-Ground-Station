@@ -30,7 +30,8 @@ extension GSViewController {
         if let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
             let s = string as String
             print("Received: \(s)") // 16 characters at a time, MS \r\n ending
-            addToSerialMonitor(s)
+            addToSerialMonitor(s) // Handles parsing
+            
         } else {
             print("Bad data at port.")
         }

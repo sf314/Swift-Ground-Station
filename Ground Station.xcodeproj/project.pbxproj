@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC4863F620B0CD0800DCCF53 /* GSVCGraphConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4863F520B0CD0800DCCF53 /* GSVCGraphConfig.swift */; };
+		DC4863F720B0CD0800DCCF53 /* GSVCGraphConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4863F520B0CD0800DCCF53 /* GSVCGraphConfig.swift */; };
 		DC5B108A1FFF3CBA00B6DF53 /* GSVCLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5B10891FFF3CBA00B6DF53 /* GSVCLayout.swift */; };
 		DC5B10971FFF43F700B6DF53 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5B10911FFF43F500B6DF53 /* ORSSerialPortManager.m */; };
 		DC5B10981FFF43F700B6DF53 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5B10911FFF43F500B6DF53 /* ORSSerialPortManager.m */; };
@@ -53,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC4863F520B0CD0800DCCF53 /* GSVCGraphConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSVCGraphConfig.swift; sourceTree = "<group>"; };
 		DC5B10891FFF3CBA00B6DF53 /* GSVCLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSVCLayout.swift; sourceTree = "<group>"; };
 		DC5B108B1FFF43F300B6DF53 /* Ground Station-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ground Station-Bridging-Header.h"; sourceTree = "<group>"; };
 		DC5B108C1FFF43F300B6DF53 /* Ground StationTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ground StationTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -133,6 +136,7 @@
 				DC6EB7E02064535C00838B75 /* FileWrite.swift */,
 				DC5B10A11FFF562E00B6DF53 /* GSVCSerialFunc.swift */,
 				DC5B10891FFF3CBA00B6DF53 /* GSVCLayout.swift */,
+				DC4863F520B0CD0800DCCF53 /* GSVCGraphConfig.swift */,
 				DCDAED911FB8DEDF00F41B2E /* MiniMap.swift */,
 				DC853B751FC78774001E8F45 /* GraphView.swift */,
 				DC6A57FD2056583C007CE5EE /* CocoaColorLib.swift */,
@@ -209,7 +213,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Stephen Flores";
 				TargetAttributes = {
 					DCDAED671FB6D27000F41B2E = {
@@ -275,6 +279,7 @@
 				DC6EB7E12064535C00838B75 /* FileWrite.swift in Sources */,
 				DC5B109B1FFF43F700B6DF53 /* ORSSerialBuffer.m in Sources */,
 				DC6A57FE2056583C007CE5EE /* CocoaColorLib.swift in Sources */,
+				DC4863F620B0CD0800DCCF53 /* GSVCGraphConfig.swift in Sources */,
 				DCDAED921FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
 				DC5B10A21FFF562E00B6DF53 /* GSVCSerialFunc.swift in Sources */,
 				DC5B109F1FFF43F700B6DF53 /* ORSSerialRequest.m in Sources */,
@@ -298,6 +303,7 @@
 				DC6EB7E22064535C00838B75 /* FileWrite.swift in Sources */,
 				DC5B109A1FFF43F700B6DF53 /* ORSSerialPort.m in Sources */,
 				DC6A57FF2056583C007CE5EE /* CocoaColorLib.swift in Sources */,
+				DC4863F720B0CD0800DCCF53 /* GSVCGraphConfig.swift in Sources */,
 				DCDAED931FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
 				DCDAED8F1FB6E2D400F41B2E /* main.swift in Sources */,
 				DC5B10981FFF43F700B6DF53 /* ORSSerialPortManager.m in Sources */,
@@ -334,6 +340,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -341,6 +348,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -391,6 +399,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -398,6 +407,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
