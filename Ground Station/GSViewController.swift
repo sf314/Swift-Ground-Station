@@ -49,7 +49,7 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         while parser.hasPackets() {
             let packet = parser.popNext()
             print("Received packet: \(packet)")
-            write(packet, toFile: "Packets.csv")
+            write(packet + "\n", toFile: "Packets.csv")
         }
     }
     
@@ -86,11 +86,14 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
             print("portSelector: selectedItem = (no selected item)")
             port = nil
         }
+        
+        // Test file write
+        write("Hey", toFile: "test.txt")
     }
     
     // MARK: - Send command
-    @IBAction func sendCommand(_ s: String) {
-        print("Sending \(s)")
+    @IBAction func sendCommand(_ s: AnyObject) {
+        print("Sending \(String(describing: s))")
     }
     
     // MARK: - Toggle save
@@ -171,6 +174,9 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         
         print("View size: \(view.frame.size.width) by \(view.frame.size.height)")
         print("Port selector width: \(portSelector.frame.size.width)")
+        
+        // Ensure the save filepath exists, and make it if it doesn't
+        initTelemDir()
     }
     
 }

@@ -264,7 +264,6 @@ extension GSViewController {
             
             inputField.target = self
             inputField.action = #selector(sendCommand(_:))
-            let b = NSButton(title: "Connect", target: self, action: #selector(connectToPort(_:)))
         }
         
         // 3. Set AutoLayout constraints on main stack
