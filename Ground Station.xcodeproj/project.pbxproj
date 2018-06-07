@@ -27,6 +27,12 @@
 		DC6A57FF2056583C007CE5EE /* CocoaColorLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6A57FD2056583C007CE5EE /* CocoaColorLib.swift */; };
 		DC6EB7E12064535C00838B75 /* FileWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6EB7E02064535C00838B75 /* FileWrite.swift */; };
 		DC6EB7E22064535C00838B75 /* FileWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6EB7E02064535C00838B75 /* FileWrite.swift */; };
+		DC72CD5520C8EAD900D81A9A /* GSTestDataIngest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72CD5420C8EAD900D81A9A /* GSTestDataIngest.swift */; };
+		DC72CD5620C8EAD900D81A9A /* GSTestDataIngest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72CD5420C8EAD900D81A9A /* GSTestDataIngest.swift */; };
+		DC72CD5820C8ECE400D81A9A /* Telemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72CD5720C8ECE400D81A9A /* Telemetry.swift */; };
+		DC72CD5920C8ECE400D81A9A /* Telemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72CD5720C8ECE400D81A9A /* Telemetry.swift */; };
+		DC72CD5B20C8EF5800D81A9A /* GSUpdateGraphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72CD5A20C8EF5800D81A9A /* GSUpdateGraphs.swift */; };
+		DC72CD5C20C8EF5800D81A9A /* GSUpdateGraphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72CD5A20C8EF5800D81A9A /* GSUpdateGraphs.swift */; };
 		DC853B761FC78774001E8F45 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853B751FC78774001E8F45 /* GraphView.swift */; };
 		DC853B771FC78774001E8F45 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853B751FC78774001E8F45 /* GraphView.swift */; };
 		DCC7563D2059F69E0076F7DE /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7563C2059F69E0076F7DE /* Parser.swift */; };
@@ -72,6 +78,9 @@
 		DC5B10A11FFF562E00B6DF53 /* GSVCSerialFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSVCSerialFunc.swift; sourceTree = "<group>"; };
 		DC6A57FD2056583C007CE5EE /* CocoaColorLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaColorLib.swift; sourceTree = "<group>"; };
 		DC6EB7E02064535C00838B75 /* FileWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWrite.swift; sourceTree = "<group>"; };
+		DC72CD5420C8EAD900D81A9A /* GSTestDataIngest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTestDataIngest.swift; sourceTree = "<group>"; };
+		DC72CD5720C8ECE400D81A9A /* Telemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telemetry.swift; sourceTree = "<group>"; };
+		DC72CD5A20C8EF5800D81A9A /* GSUpdateGraphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSUpdateGraphs.swift; sourceTree = "<group>"; };
 		DC853B751FC78774001E8F45 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		DCC7563C2059F69E0076F7DE /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		DCDAED681FB6D27000F41B2E /* Ground Station.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ground Station.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,10 +141,13 @@
 				DCDAED8D1FB6E2D400F41B2E /* main.swift */,
 				DCDAED701FB6D27000F41B2E /* Assets.xcassets */,
 				DCDAED8A1FB6D28200F41B2E /* GSViewController.swift */,
+				DC72CD5720C8ECE400D81A9A /* Telemetry.swift */,
+				DC72CD5A20C8EF5800D81A9A /* GSUpdateGraphs.swift */,
 				DCC7563C2059F69E0076F7DE /* Parser.swift */,
 				DC6EB7E02064535C00838B75 /* FileWrite.swift */,
 				DC5B10A11FFF562E00B6DF53 /* GSVCSerialFunc.swift */,
 				DC5B10891FFF3CBA00B6DF53 /* GSVCLayout.swift */,
+				DC72CD5420C8EAD900D81A9A /* GSTestDataIngest.swift */,
 				DC4863F520B0CD0800DCCF53 /* GSVCGraphConfig.swift */,
 				DCDAED911FB8DEDF00F41B2E /* MiniMap.swift */,
 				DC853B751FC78774001E8F45 /* GraphView.swift */,
@@ -272,6 +284,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCDAED6C1FB6D27000F41B2E /* AppDelegate.swift in Sources */,
+				DC72CD5B20C8EF5800D81A9A /* GSUpdateGraphs.swift in Sources */,
+				DC72CD5520C8EAD900D81A9A /* GSTestDataIngest.swift in Sources */,
 				DC5B108A1FFF3CBA00B6DF53 /* GSVCLayout.swift in Sources */,
 				DCC7563D2059F69E0076F7DE /* Parser.swift in Sources */,
 				DCDAED8B1FB6D28200F41B2E /* GSViewController.swift in Sources */,
@@ -282,6 +296,7 @@
 				DC4863F620B0CD0800DCCF53 /* GSVCGraphConfig.swift in Sources */,
 				DCDAED921FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
 				DC5B10A21FFF562E00B6DF53 /* GSVCSerialFunc.swift in Sources */,
+				DC72CD5820C8ECE400D81A9A /* Telemetry.swift in Sources */,
 				DC5B109F1FFF43F700B6DF53 /* ORSSerialRequest.m in Sources */,
 				DC5B10971FFF43F700B6DF53 /* ORSSerialPortManager.m in Sources */,
 				DC5B10991FFF43F700B6DF53 /* ORSSerialPort.m in Sources */,
@@ -296,6 +311,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCDAED901FB6E33300F41B2E /* AppDelegate.swift in Sources */,
+				DC72CD5C20C8EF5800D81A9A /* GSUpdateGraphs.swift in Sources */,
+				DC72CD5620C8EAD900D81A9A /* GSTestDataIngest.swift in Sources */,
 				DCDAED8C1FB6D28200F41B2E /* GSViewController.swift in Sources */,
 				DCC7563E2059F69E0076F7DE /* Parser.swift in Sources */,
 				DC5B10A31FFF582300B6DF53 /* GSVCSerialFunc.swift in Sources */,
@@ -306,6 +323,7 @@
 				DC4863F720B0CD0800DCCF53 /* GSVCGraphConfig.swift in Sources */,
 				DCDAED931FB8DEDF00F41B2E /* MiniMap.swift in Sources */,
 				DCDAED8F1FB6E2D400F41B2E /* main.swift in Sources */,
+				DC72CD5920C8ECE400D81A9A /* Telemetry.swift in Sources */,
 				DC5B10981FFF43F700B6DF53 /* ORSSerialPortManager.m in Sources */,
 				DC5B109E1FFF43F700B6DF53 /* ORSSerialPacketDescriptor.m in Sources */,
 				DC853B771FC78774001E8F45 /* GraphView.swift in Sources */,

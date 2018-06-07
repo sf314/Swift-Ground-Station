@@ -14,9 +14,10 @@ import Cocoa
 class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, ORSSerialPortDelegate {
     
     // MARK: - Data Variables
+    let telem = Telemetry()
     let parser = TelemParser()
     var graphs: [GraphView] = [] // Hold graphs (can add to it!)
-    var graphItems: [GraphItem] = [] // Hold graph items (which themselves hold graphs)
+//    var graphItems: [GraphItem] = [] // Hold graph items (which themselves hold graphs)
 //    var graphItems: [NSCollectionViewItem] = []
     
     // MARK: - Serial Port
@@ -50,6 +51,8 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
             let packet = parser.popNext()
             print("Received packet: \(packet)")
             write(packet + "\n", toFile: "Packets.csv")
+            telem.set(using: packet)
+            updateGraphs(using: telem)
         }
     }
     
@@ -108,9 +111,6 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
             toggleSaveButton.title = "Saving enabled"
         }
         print("File Write set to \(enableFileWrite)")
-        
-        // Simulate incoming data
-        addToSerialMonitor(fakePacket() + "\r\n")
         
         updateSubviews(self.view)
     }

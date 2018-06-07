@@ -144,35 +144,35 @@ class GraphView: NSView {
 
 
 
-// For CollectionView: Requires NSCollectionViewItem subclass
-
-class GraphItem: NSGridCell {
-    
-    // MARK: - Variables
-    var graph: GraphView? = nil
+//// For CollectionView: Requires NSCollectionViewItem subclass
+//
+//class GraphItem: NSGridCell {
 //    
-//    // MARK: - Functions
+//    // MARK: - Variables
+//    var graph: GraphView? = nil
+////    
+////    // MARK: - Functions
+////    func setGraph(_ g: GraphView) {
+////        graph = g
+////        view.addSubview(graph)
+////    }
+////    
+////    init() {
+////        graph = GraphView()
+////        super.init(coder: NSKeyedArchiver())!
+////    }
+////    
+////    required init?(coder: NSCoder) {
+////        graph = GraphView()
+////        super.init(coder: coder)
+//////        fatalError("init(coder:) has not been implemented")
+////        // Nahh
+////    }
 //    func setGraph(_ g: GraphView) {
+////        view.addSubview(g)
+//        print("GraphItem.setGraph(): setting graph with name: \(g.name)")
 //        graph = g
-//        view.addSubview(graph)
 //    }
 //    
-//    init() {
-//        graph = GraphView()
-//        super.init(coder: NSKeyedArchiver())!
-//    }
 //    
-//    required init?(coder: NSCoder) {
-//        graph = GraphView()
-//        super.init(coder: coder)
-////        fatalError("init(coder:) has not been implemented")
-//        // Nahh
-//    }
-    func setGraph(_ g: GraphView) {
-//        view.addSubview(g)
-        print("GraphItem.setGraph(): setting graph with name: \(g.name)")
-        graph = g
-    }
-    
-    
-}
+//}

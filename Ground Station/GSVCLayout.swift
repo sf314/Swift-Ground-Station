@@ -53,6 +53,8 @@ extension GSViewController {
         toggleSaveButton.centerYAnchor.constraint(equalTo: topBar.centerYAnchor).isActive = true
         toggleSaveButton.trailingAnchor.constraint(equalTo: topBar.trailingAnchor, constant: -30).isActive = true
         toggleSaveButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        configureTestDataIngest()
     }
 }
 
