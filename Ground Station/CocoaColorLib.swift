@@ -44,6 +44,18 @@ class Greens {
 }
 
 // Custom Colour declarations:
-let backgroundDark = NSColor(calibratedRed: 28/255, green: 28/255, blue: 34/255, alpha: 1)
-let backgroundMed = NSColor(calibratedRed: 45/255, green: 47/255, blue: 58/255, alpha: 1)
-let backgroundLight = NSColor(calibratedRed: 129/255, green: 135/255, blue: 138/255, alpha: 1)
+
+var usePeanutColours = true
+
+var backgroundDark = NSColor(calibratedRed: 28/255, green: 28/255, blue: 34/255, alpha: 1)
+var backgroundMed = NSColor(calibratedRed: 45/255, green: 47/255, blue: 58/255, alpha: 1)
+var backgroundLight = NSColor(calibratedRed: 129/255, green: 135/255, blue: 138/255, alpha: 1)
+
+let blueDark = NSColor(calibratedRed: 28/255, green: 28/255, blue: 34/255, alpha: 1)
+let blueMed = NSColor(calibratedRed: 45/255, green: 47/255, blue: 58/255, alpha: 1)
+let blueLight = NSColor(calibratedRed: 129/255, green: 135/255, blue: 138/255, alpha: 1)
+
+let redDark = NSColor(calibratedRed: 54/255, green: 28/255, blue: 28/255, alpha: 1)
+let redMed = NSColor(calibratedRed: 78/255, green: 47/255, blue: 45/255, alpha: 1)
+let redLight = NSColor(calibratedRed: 158/255, green: 135/255, blue: 129/255, alpha: 1)
+ 

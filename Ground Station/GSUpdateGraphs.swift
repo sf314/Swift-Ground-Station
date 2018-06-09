@@ -20,6 +20,10 @@ extension GSViewController {
         graph(for: .temp).add(telem.temp)
         graph(for: .press).add(telem.pressure)
         graph(for: .volt).add(telem.volt)
+        graph(for: .gps_alt).add(telem.gps_alt)
+        graph(for: .tilt_x).add(telem.tilt_x)
+        graph(for: .tilt_y).add(telem.tilt_y)
+        graph(for: .tilt_z).add(telem.tilt_z)
         
         for graph in graphs {
             graph.updateDisplay()

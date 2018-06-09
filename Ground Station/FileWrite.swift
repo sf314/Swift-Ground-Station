@@ -15,6 +15,8 @@ import Foundation
  Toggle file write with boolean flag
  */
 
+let debugMode = true
+
 let telemDir = "CanSat_Telem " + dateToString(Date.init(timeIntervalSinceNow: 0))
 let telemetryFile = "telemetry.csv"
 let logFile = "log.txt"
@@ -54,6 +56,10 @@ func write(_ s: String, toFile fileName: String) {
 
 
 func initTelemDir() {
+    if debugMode {
+        return
+    }
+    
     let url = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask)[0].appendingPathComponent(telemDir)
     do {
         try FileManager.default.createDirectory(at: url, withIntermediateDirectories: false, attributes: nil)

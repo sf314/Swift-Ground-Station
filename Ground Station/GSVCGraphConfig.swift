@@ -25,7 +25,7 @@ extension GSViewController {
         graphs[7].type = .tilt_z
         
         graph(for: .alt).set(name: "Alt", unit: "m")
-        graph(for: .press).set(name: "Press", unit: "hPa")
+        graph(for: .press).set(name: "Press", unit: "Pa")
         graph(for: .temp).set(name: "Temp", unit: "°C")
         graph(for: .volt).set(name: "Volt", unit: "V")
         graph(for: .gps_alt).set(name: "GPS Alt", unit: "m")

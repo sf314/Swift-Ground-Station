@@ -35,6 +35,8 @@
 		DC72CD5C20C8EF5800D81A9A /* GSUpdateGraphs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72CD5A20C8EF5800D81A9A /* GSUpdateGraphs.swift */; };
 		DC853B761FC78774001E8F45 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853B751FC78774001E8F45 /* GraphView.swift */; };
 		DC853B771FC78774001E8F45 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853B751FC78774001E8F45 /* GraphView.swift */; };
+		DCB3231A20CA33CD007AE972 /* GSChangeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3231920CA33CD007AE972 /* GSChangeColor.swift */; };
+		DCB3231B20CA33CD007AE972 /* GSChangeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3231920CA33CD007AE972 /* GSChangeColor.swift */; };
 		DCC7563D2059F69E0076F7DE /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7563C2059F69E0076F7DE /* Parser.swift */; };
 		DCC7563E2059F69E0076F7DE /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC7563C2059F69E0076F7DE /* Parser.swift */; };
 		DCDAED6C1FB6D27000F41B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */; };
@@ -82,6 +84,7 @@
 		DC72CD5720C8ECE400D81A9A /* Telemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Telemetry.swift; sourceTree = "<group>"; };
 		DC72CD5A20C8EF5800D81A9A /* GSUpdateGraphs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSUpdateGraphs.swift; sourceTree = "<group>"; };
 		DC853B751FC78774001E8F45 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		DCB3231920CA33CD007AE972 /* GSChangeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSChangeColor.swift; sourceTree = "<group>"; };
 		DCC7563C2059F69E0076F7DE /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		DCDAED681FB6D27000F41B2E /* Ground Station.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ground Station.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCDAED6B1FB6D27000F41B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -143,6 +146,7 @@
 				DCDAED8A1FB6D28200F41B2E /* GSViewController.swift */,
 				DC72CD5720C8ECE400D81A9A /* Telemetry.swift */,
 				DC72CD5A20C8EF5800D81A9A /* GSUpdateGraphs.swift */,
+				DCB3231920CA33CD007AE972 /* GSChangeColor.swift */,
 				DCC7563C2059F69E0076F7DE /* Parser.swift */,
 				DC6EB7E02064535C00838B75 /* FileWrite.swift */,
 				DC5B10A11FFF562E00B6DF53 /* GSVCSerialFunc.swift */,
@@ -303,6 +307,7 @@
 				DCDAED6F1FB6D27000F41B2E /* Ground_Station.xcdatamodeld in Sources */,
 				DC853B761FC78774001E8F45 /* GraphView.swift in Sources */,
 				DC5B109D1FFF43F700B6DF53 /* ORSSerialPacketDescriptor.m in Sources */,
+				DCB3231A20CA33CD007AE972 /* GSChangeColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +335,7 @@
 				DC5B109C1FFF43F700B6DF53 /* ORSSerialBuffer.m in Sources */,
 				DC5B10A41FFF582600B6DF53 /* GSVCLayout.swift in Sources */,
 				DC5B10A01FFF43F700B6DF53 /* ORSSerialRequest.m in Sources */,
+				DCB3231B20CA33CD007AE972 /* GSChangeColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

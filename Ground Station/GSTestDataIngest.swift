@@ -19,13 +19,6 @@ extension GSViewController {
     }
     
     func configureTestDataIngest() {
-        let testDataButton: NSButton = {
-            let b = NSButton(title: "Make Fake", target: self, action: #selector(ingestFakeData(_:)))
-            b.setButtonType(.momentaryPushIn)
-            b.bezelStyle = .rounded
-            b.setFrameSize(NSSize(width: 120, height: 25))
-            return b
-        }()
         
         topBar.addSubview(testDataButton)
         
@@ -33,6 +26,7 @@ extension GSViewController {
         testDataButton.centerYAnchor.constraint(equalTo: topBar.centerYAnchor).isActive = true
         testDataButton.trailingAnchor.constraint(equalTo: toggleSaveButton.leadingAnchor, constant: -30).isActive = true
         testDataButton.widthAnchor.constraint(equalToConstant: 150)
+    
     }
     
 }

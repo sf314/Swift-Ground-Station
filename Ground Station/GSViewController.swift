@@ -34,13 +34,27 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
     
     // MARK: - Receive and parse data
     func addToSerialMonitor(_ s: String) {
+        // TODO: - Fix scrolling of serial monitor!
         write(s, toFile: "RawData.txt")
         self.serialMonitor.textStorage?.mutableString.append("\(s)");
+        
+            // Actually, do a thing:
+            strings.append(s)
+            if strings.count > 4 {
+                strings.removeFirst()
+            }
+            self.serialMonitor.textStorage?.mutableString.setString("")
+            for s in strings {
+                self.serialMonitor.textStorage?.mutableString.append(s)
+            }
+        
         self.serialMonitor.textColor = .white
         self.serialMonitor.frame.size.height += 14 // Hey it scrolls!
         self.serialMonitor.frame.size.width = serialWindow.contentView.frame.size.width // Necessary for some reason
         self.serialMonitor.needsDisplay = true
         self.serialMonitor.scrollToEndOfDocument(self)
+        
+        self.serialWindow.needsDisplay = true
         
         // *** Parse data here
         for character in s {
@@ -56,14 +70,33 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         }
     }
     
+    var strings: [String] = []
     func debugToSerialMonitor(_ s: String) {
         // Same as regular, but no parsing!
         self.serialMonitor.textStorage?.mutableString.append("\(s)");
+        
+            // Actually, do a thing:
+            strings.append(s)
+            if strings.count > 4 {
+                strings.removeFirst()
+            }
+            self.serialMonitor.textStorage?.mutableString.setString("")
+            for s in strings {
+                self.serialMonitor.textStorage?.mutableString.append(s)
+            }
+        
         self.serialMonitor.textColor = .white
         self.serialMonitor.frame.size.height += 14 // Hey it scrolls!
         self.serialMonitor.frame.size.width = serialWindow.contentView.frame.size.width // Necessary for some reason
         self.serialMonitor.needsDisplay = true
         self.serialMonitor.scrollToEndOfDocument(self)
+        
+        self.serialWindow.needsDisplay = true
+//        self.serialWindow.scrollToEndOfDocument(self.serialMonitor)
+        
+        
+        print("serialWindow size: \(serialWindow.frame.size.width)x\(serialWindow.frame.size.height)")
+        print("serialMonitor size: \(serialMonitor.frame.size.width)x\(serialMonitor.frame.size.height)")
     }
     
     // Mark: - Connect
@@ -95,8 +128,23 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
     }
     
     // MARK: - Send command
-    @IBAction func sendCommand(_ s: AnyObject) {
-        print("Sending \(String(describing: s))")
+    @IBAction func sendCommand(_ sender: AnyObject) {
+        // Sender should be of type NSTextField!
+        let textField = sender as! NSTextField
+        
+        print("Sending \(textField.stringValue)")
+        debugToSerialMonitor("Sending \(textField.stringValue)\n")
+        
+        if let data = (textField.stringValue).data(using: String.Encoding.utf8) {
+            if let port = port {
+                port.send(data)
+                print("Successfully sent command")
+            } else {
+                debugToSerialMonitor("Failed to send command: port not defined\n")
+            }
+        } else {
+            debugToSerialMonitor("Failed to send command: text was bad\n")
+        }
     }
     
     // MARK: - Toggle save
@@ -136,6 +184,7 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         b.setButtonType(.momentaryPushIn)
         b.bezelStyle = .rounded
         b.setFrameSize(NSSize(width: 120, height: 25))
+        b.toolTip = "Connect to the selected port"
         return b
     }()
     
@@ -144,6 +193,25 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         b.setButtonType(.momentaryPushIn)
         b.bezelStyle = .rounded
         b.setFrameSize(NSSize(width: 120, height: 25))
+        b.toolTip = "Enable or disable file saving"
+        return b
+    }()
+    
+    let testDataButton: NSButton = {
+        let b = NSButton(title: "Make Fake", target: self, action: #selector(ingestFakeData(_:)))
+        b.setButtonType(.momentaryPushIn)
+        b.bezelStyle = .rounded
+        b.setFrameSize(NSSize(width: 120, height: 25))
+        b.toolTip = "Generate a fake packet"
+        return b
+    }()
+    
+    let themeToggle: NSButton = {
+        let b = NSButton(title: "Toggle Theme", target: self, action: #selector(toggleColor(_:)))
+        b.setButtonType(.momentaryPushIn)
+        b.bezelStyle = .rounded
+        b.setFrameSize(NSSize(width: 120, height: 25))
+        b.toolTip = "Switch between blue and red themes"
         return b
     }()
     

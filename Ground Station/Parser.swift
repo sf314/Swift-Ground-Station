@@ -18,6 +18,8 @@ import Foundation
  Maybe parse one character at a time like CSGps?
  */
 
+let packetLength = 17
+
 class TelemParser {
     // Init?
     init() {
@@ -28,8 +30,8 @@ class TelemParser {
     // Vars
     var tempString: String
     var stringQueue: [String]
-    let expectedPacketSize = 17
-    let expectedPacketHeader = "5324"
+    let expectedPacketSize = packetLength
+    let expectedPacketHeader = "5324" // Or the other one
     
     // Funcs
     func ingest(_ c: Character) {
@@ -62,6 +64,7 @@ class TelemParser {
             }
             return false
         }
+        print("Invalid packet. Got size of \(arr.count), expected \(expectedPacketSize)");
         return false
     }
     
@@ -79,12 +82,30 @@ class TelemParser {
  Exclude the line ending!
  */
 func fakePacket() -> String {
-    var returnString = "5324" + ","
-    for i in 0..<16 {
-        returnString += String(arc4random() % 100)
-        if i != 15 {
-            returnString += ","
-        } 
-    }
+    var returnString = "5324" + "," 
+    
+    returnString += String(arc4random() % 100) + "," //    var met = 0.0
+    returnString += String((arc4random() % 100)) + "," //    var packetCount = 0
+    returnString += String(Double(arc4random() % 100)) + "," //    var altitude = 0.0
+    returnString += String(Double(arc4random() % 100)) + "," //    var pressure = 0.0
+    returnString += String(Double(arc4random() % 100)) + "," //    var temp = 0.0
+    returnString += String(Double(arc4random() % 100)) + "," //    var volt = 0.0
+    returnString += String(Double(arc4random() % 100)) + "," //    var gps_time = 0.0
+    returnString += String(Double(arc4random() % 100)) + "," //    var gps_lat = 0.0
+    returnString += String(Double(arc4random() % 100)) + "," //    var gps_lon = 0.0
+    returnString += String(Double(arc4random() % 100)) + "," //    var gps_alt = 0.0
+    returnString += String((arc4random() % 100)) + "," //    var gps_sats = 0
+    returnString += String(Double(arc4random() % 100)) + "," //    var tilt_x = 0.0
+    returnString += String(Double(arc4random() % 100)) + "," //    var tilt_y = 0.0
+    returnString += String(Double(arc4random() % 100)) + "," //    var tilt_z = 0.0
+    returnString += String((arc4random() % 100)) + "," //    var state = 0
+    returnString += String(Double(arc4random() % 100))//    var volt2 = 0.0
+    
     return returnString
 }
+
+
+/*
+ Example frames:
+ 1234,122,122,9842.06,-51040.00,234.88,-0.32,0,0.00,0.00,0.00,0,0.00,0.00,165.18,5,1.98
+ */

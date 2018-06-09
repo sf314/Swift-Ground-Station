@@ -55,6 +55,7 @@ extension GSViewController {
         toggleSaveButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
         
         configureTestDataIngest()
+        configureThemeToggle()
     }
 }
 
@@ -213,11 +214,12 @@ extension GSViewController {
         serialWindow.scrollsDynamically = true
         
         // *** Text View: serialMonitor
+//        serialWindow.addSubview(serialMonitor)
         serialMonitor.translatesAutoresizingMaskIntoConstraints = false
         serialMonitor.topAnchor.constraint(equalTo: serialWindow.topAnchor).isActive = true
         serialMonitor.leadingAnchor.constraint(equalTo: serialWindow.leadingAnchor).isActive = true
         serialMonitor.trailingAnchor.constraint(equalTo: serialWindow.trailingAnchor).isActive = true // I SEE TEXT AGAIN YAS
-        serialMonitor.heightAnchor.constraint(greaterThanOrEqualTo: serialWindow.heightAnchor).isActive = true // Necessary for scrolling (?)
+        serialMonitor.heightAnchor.constraint(equalTo: serialWindow.heightAnchor).isActive = true // Necessary for scrolling (?)
         serialMonitor.minSize.width = serialWindow.frame.width
         serialMonitor.minSize.height = serialWindow.frame.height
         serialMonitor.textContainerInset = NSSize(width: 10, height: 0)
@@ -227,7 +229,12 @@ extension GSViewController {
         serialMonitor.sizeToFit()
         // Warning: Height for serialMonitor is ambiguous since it changes
         
-        serialMonitor.isEditable = true
+        serialMonitor.isEditable = false
+//        serialMonitor.layoutManager?.hasNonContiguousLayout = true
+        serialMonitor.isVerticallyResizable = true //??
+        
+        // NEW
+//        serialWindow.automaticallyAdjustsContentInsets = true
     }
 }
 
@@ -244,6 +251,14 @@ extension GSViewController {
         commandStack.autoresizesSubviews = true
         leftPanel.addSubview(commandStack)
         
+        // 1.1: add a label to the top (instead of doing tooltips)
+        let label = NSTextView()
+        label.string = "Command Panel: Hit enter to send"
+        label.backgroundColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0)
+        label.textColor = NSColor(calibratedRed: 1, green: 1, blue: 1, alpha: 1)
+        label.alignment = .center
+        commandStack.addView(label, in: .top)
+        
         // 2. Generate all n command subviews, add them
         let numberOfCommands = 5
         for _ in 0..<numberOfCommands {
@@ -253,19 +268,25 @@ extension GSViewController {
             commandView.autoresizesSubviews = true
             
             let inputField = NSTextField()
-            let sendButton = NSButton()
+            let inputField2 = NSTextField()
+//            let sendButton = NSButton()
             
             commandView.addView(inputField, in: .leading)
-            commandView.addView(sendButton, in: .leading)
+            commandView.addView(inputField2, in: .leading)
+//            commandView.addView(sendButton, in: .leading)
             commandViews.append(commandView)
-//            inputField.widthAnchor.constraint(equalTo: commandView.widthAnchor, multiplier: 0.5).isActive = true
-//            sendButton.widthAnchor.constraint(equalTo: commandView.widthAnchor, multiplier: 0.5).isActive = true
             
             commandStack.addView(commandView, in: .top)
             commandView.widthAnchor.constraint(equalTo: commandStack.widthAnchor).isActive = true
             
             inputField.target = self
             inputField.action = #selector(sendCommand(_:))
+            inputField2.target = self
+            inputField2.action = #selector(sendCommand(_:))
+//            sendButton.action = inputField.action
+            
+            inputField.toolTip = "Press enter to send command"
+            inputField2.toolTip = "Press enter to send command"
         }
         
         // 3. Set AutoLayout constraints on main stack
@@ -280,6 +301,11 @@ extension GSViewController {
         (commandViews[1].views[0] as! NSTextField).stringValue = "b"
         (commandViews[2].views[0] as! NSTextField).stringValue = "c"
         (commandViews[3].views[0] as! NSTextField).stringValue = "?"
+        
+        (commandViews[0].views[1] as! NSTextField).stringValue = "0"
+        (commandViews[1].views[1] as! NSTextField).stringValue = "1"
+        (commandViews[2].views[1] as! NSTextField).stringValue = "2"
+        (commandViews[3].views[1] as! NSTextField).stringValue = "3"
     }
 }
 
