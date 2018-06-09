@@ -24,8 +24,8 @@ extension GSViewController {
         
         testDataButton.translatesAutoresizingMaskIntoConstraints = false
         testDataButton.centerYAnchor.constraint(equalTo: topBar.centerYAnchor).isActive = true
-        testDataButton.trailingAnchor.constraint(equalTo: toggleSaveButton.leadingAnchor, constant: -30).isActive = true
-        testDataButton.widthAnchor.constraint(equalToConstant: 150)
+        testDataButton.trailingAnchor.constraint(equalTo: toggleSaveButton.leadingAnchor, constant: -15).isActive = true
+        testDataButton.widthAnchor.constraint(equalToConstant: 70)
     
     }
     

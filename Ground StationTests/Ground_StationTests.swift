@@ -67,6 +67,14 @@ class Ground_StationTests: XCTestCase {
         }
     }
     
+    
+    
+    func testConvertDegrees() {
+        let gs = GSViewController()
+        print(gs.convertToDeg(32.1301)) // 32.2169444
+        print(gs.convertToDeg(-98.1124)) // -98.19
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

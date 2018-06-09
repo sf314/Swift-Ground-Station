@@ -18,20 +18,24 @@ extension GSViewController {
         graphs[0].type = .alt
         graphs[1].type = .press
         graphs[2].type = .temp
-        graphs[3].type = .volt
-        graphs[4].type = .gps_alt
-        graphs[5].type = .tilt_x
-        graphs[6].type = .tilt_y
-        graphs[7].type = .tilt_z
+        
+        graphs[3].type = .volt1
+        graphs[4].type = .volt2
+        graphs[5].type = .gps_alt
+        
+        graphs[6].type = .tilt_x
+        graphs[7].type = .tilt_y
+        graphs[8].type = .tilt_z
         
         graph(for: .alt).set(name: "Alt", unit: "m")
         graph(for: .press).set(name: "Press", unit: "Pa")
         graph(for: .temp).set(name: "Temp", unit: "°C")
-        graph(for: .volt).set(name: "Volt", unit: "V")
+        graph(for: .volt1).set(name: "Volt 1", unit: "V")
         graph(for: .gps_alt).set(name: "GPS Alt", unit: "m")
         graph(for: .tilt_x).set(name: "Tilt X", unit: "°/sec")
         graph(for: .tilt_y).set(name: "Tilt Y", unit: "°/sec")
         graph(for: .tilt_z).set(name: "Tilt Z", unit: "°/sec")
+        graph(for: .volt2).set(name: "Volt 2", unit: "V")
     }
     
     func graph(for type: GraphType) -> GraphView {

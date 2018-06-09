@@ -56,6 +56,13 @@ extension GSViewController {
         
         configureTestDataIngest()
         configureThemeToggle()
+        
+        topBar.addSubview(teamNum)
+        teamNum.translatesAutoresizingMaskIntoConstraints = false
+        teamNum.centerYAnchor.constraint(equalTo: connectButton.centerYAnchor).isActive = true
+        teamNum.leadingAnchor.constraint(equalTo: connectButton.trailingAnchor, constant: 15).isActive = true
+        teamNum.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        toggleColor(self)
     }
 }
 
@@ -111,6 +118,8 @@ extension GSViewController {
         
         configureSerialMonitor()
         configureCommandPanel()
+        configureInfoStack()
+        configureMap()
     }
     
     func configureRightPanel() {
@@ -127,8 +136,8 @@ extension GSViewController {
         rightPanel.autoresizesSubviews = true
         rightPanel.setColor(backgroundDark)
         
-        // Create 8 graphs
-        for i in 0..<8 {
+        // Create 9 graphs
+        for i in 0..<9 {
             let graph = GraphView()
             graph.name = "Graph " + String(i)
             graphs.append(graph)
@@ -139,9 +148,9 @@ extension GSViewController {
 //            }
         }
         // Create dummy graph
-        let dummyGraph = GraphView()
-        dummyGraph.name = "Dummy Graph"
-        graphs.append(dummyGraph)
+//        let dummyGraph = GraphView()
+//        dummyGraph.name = "Dummy Graph"
+//        graphs.append(dummyGraph)
     
         rightPanel.addSubview(graphGridView)
         graphGridView.translatesAutoresizingMaskIntoConstraints = false // Below is proper inset values
@@ -162,7 +171,7 @@ extension GSViewController {
         // 2. Declare your subviews, add them to the view hierarcy
         let row1 = NSStackView(views: [graphs[0], graphs[1], graphs[2]])
         let row2 = NSStackView(views: [graphs[3], graphs[4], graphs[5]])
-        let row3 = NSStackView(views: [graphs[6], graphs[7], NSView()])
+        let row3 = NSStackView(views: [graphs[6], graphs[7], graphs[8]])
         
         rowStack.addView(row1, in: .top)
         rowStack.addView(row2, in: .top)

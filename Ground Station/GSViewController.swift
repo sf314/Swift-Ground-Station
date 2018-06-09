@@ -10,6 +10,7 @@ import Foundation
 import AppKit
 import CoreGraphics
 import Cocoa
+import MapKit
 
 class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, ORSSerialPortDelegate {
     
@@ -63,10 +64,12 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
         
         while parser.hasPackets() {
             let packet = parser.popNext()
-            print("Received packet: \(packet)")
-            write(packet + "\n", toFile: "Packets.csv")
-            telem.set(using: packet)
-            updateGraphs(using: telem)
+            if parser.isValid(packet) {
+                print("Received packet: \(packet)")
+                write(packet + "\n", toFile: "Packets.csv")
+                telem.set(using: packet)
+                updateGraphs(using: telem)
+            }
         }
     }
     
@@ -169,6 +172,7 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
     let panel = GSPanel() // Entire lower view. Holds all major subviews
     let leftPanel = GSPanel() // Left side of the view
     let rightPanel = GSPanel() // Right side of the view
+    let teamNum = NSTextView()
     
     let portSelector = NSPopUpButton()
     let serialWindow = NSScrollView()
@@ -177,6 +181,19 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
     
     let commandStack = NSStackView()
     var commandViews: [NSStackView] = []
+    
+    let infoStack = NSStackView()
+    let dataStack = NSStackView()
+    let gpsStack = NSStackView()
+        let metLabel = NSTextView()
+        let packetLabel = NSTextView()
+        let stateLabel = NSTextView()
+        let velLabel = NSTextView()
+        let gps_latLabel = NSTextView()
+        let gps_lonLabel = NSTextView()
+        let gps_satsLabel = NSTextView()
+        let gps_timeLabel = NSTextView()
+    let map = MKMapView()
     
     let connectButton: NSButton = {
 //        let b = NSButton(title: "Connect", target: self, action: #selector(connectToPort(_:)))
@@ -198,7 +215,7 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
     }()
     
     let testDataButton: NSButton = {
-        let b = NSButton(title: "Make Fake", target: self, action: #selector(ingestFakeData(_:)))
+        let b = NSButton(title: "Test", target: self, action: #selector(ingestFakeData(_:)))
         b.setButtonType(.momentaryPushIn)
         b.bezelStyle = .rounded
         b.setFrameSize(NSSize(width: 120, height: 25))
@@ -207,7 +224,7 @@ class GSViewController: NSViewController, NSWindowDelegate, NSToolbarDelegate, O
     }()
     
     let themeToggle: NSButton = {
-        let b = NSButton(title: "Toggle Theme", target: self, action: #selector(toggleColor(_:)))
+        let b = NSButton(title: "CL", target: self, action: #selector(toggleColor(_:)))
         b.setButtonType(.momentaryPushIn)
         b.bezelStyle = .rounded
         b.setFrameSize(NSSize(width: 120, height: 25))

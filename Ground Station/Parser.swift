@@ -31,6 +31,8 @@ class TelemParser {
     var tempString: String
     var stringQueue: [String]
     let expectedPacketSize = packetLength
+    let peanutPacketHeader = "5324"
+    let butterPacketHeader = "5278"
     let expectedPacketHeader = "5324" // Or the other one
     
     // Funcs
@@ -59,7 +61,7 @@ class TelemParser {
         // Check length. Should be expectedPacketSize
         let arr = packet.split(separator: ",")
         if arr.count == expectedPacketSize {
-            if arr[0] == expectedPacketHeader {
+            if arr[0] == butterPacketHeader || arr[0] == peanutPacketHeader {
                 return true
             }
             return false

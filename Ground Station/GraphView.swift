@@ -21,7 +21,7 @@
  */
 
 enum GraphType {
-    case alt, press, temp, volt, gps_alt, tilt_x, tilt_y, tilt_z, none
+    case alt, press, temp, volt1, gps_alt, tilt_x, tilt_y, tilt_z, volt2, none
 }
 
 import Foundation
@@ -48,7 +48,11 @@ class GraphView: NSView {
     
     
     func add(_ point: Double) {
-        data.append(point)
+        var newPoint = point 
+        if newPoint < 0 {
+            newPoint = 0 - newPoint
+        }
+        data.append(newPoint)
         if data.count > size { // size controlled
             data.remove(at: 0)
         }

@@ -19,9 +19,9 @@ extension GSViewController {
         
         topBar.addSubview(themeToggle)
         themeToggle.translatesAutoresizingMaskIntoConstraints = false
-        themeToggle.trailingAnchor.constraint(equalTo: testDataButton.leadingAnchor, constant: -25).isActive = true
+        themeToggle.trailingAnchor.constraint(equalTo: testDataButton.leadingAnchor, constant: -15).isActive = true
         themeToggle.centerYAnchor.constraint(equalTo: topBar.centerYAnchor).isActive = true
-        themeToggle.widthAnchor.constraint(equalToConstant: 125).isActive = true
+        themeToggle.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
     }
     
@@ -33,11 +33,13 @@ extension GSViewController {
             backgroundDark = blueDark
             backgroundMed = blueMed
             backgroundLight = blueLight
+            teamNum.string = "Team 5324: PEANUT"
         } else {
             // change to reds
             backgroundDark = redDark
             backgroundMed = redMed
             backgroundLight = redLight
+            teamNum.string = "Team 5278: BUTTER"
         }
         
         // Toggle and refresh
